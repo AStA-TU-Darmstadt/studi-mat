@@ -15,16 +15,22 @@ Studi-Mat  is a java-script "Voting Orientation Application". It is based on the
 Each position is rated in the following manner: Yes equals 1 while no is -1. Maybe counts as 0 and skipping is internally a 99.
 Now for every question, if it was not skipped, the result is added to the sum depending on this table:
 
-|group    |   user  |  score|
-|.........|.........|.......|
-|   1     |   1     |     +1|
-|  -1     |  -1     |     +1|
-|   0     |   0     |     +1|
-|   1     |  -1     |    -1|
-|  -1     |   1     |     -1|
-|   0     | 1/-1    |    -0.5|
-|  1/-1   |   0     |    -0.5|
+| group    |   user  |  score |
+|----------|---------|--------|
+|   1      |   1     |     +1 |
+|  -1      |  -1     |     +1 |
+|   0      |   0     |     +1 |
+|   1      |  -1     |    -1  |
+|  -1      |   1     |     -1 | 
+|   0      | 1/-1    |    -0.5|
+|  1/-1    |   0     |    -0.5|
 
 If a question should be counted double the score just gets multiplied by two.
 
-The resulting score can be from -n-d to n+d if n is the number of statements and d the number of double ratings. The percentage is thereby calculated by just 
+The resulting score can be from -n-d to n+d if n is the number of statements and d the number of double ratings.
+
+
+# TODO
+ - recheck the calculating of the result
+ - enable dual language support
+ - add the statments of the lists
