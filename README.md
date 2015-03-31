@@ -30,8 +30,9 @@ If a question should be counted double the score just gets multiplied by two.
 The resulting score can be from -n-d to n+d if n is the number of statements and d the number of double ratings.
 
 
-## TODO/Roadmap
+## TODO / Roadmap
 This list is ordered. Most important topics are on the top
  - recheck the calculating of the result
  - enable dual language support
  - add the statments of the lists
+ - decide for a license (GPL 3 would be best) and remove all not used licenses (should be done carefully)
