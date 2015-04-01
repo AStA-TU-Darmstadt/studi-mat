@@ -4,7 +4,7 @@ Studi-Mat  is a java-script "Voting Orientation Application". It is based on the
 
 
 
-## The studi-mat has the following featurews implemented:
+## The studi-mat has the following features implemented:
 
 - load data via .csv
  - the .csv contains: Short Name of the question, names and abreviations of the groups, statements in long form, rating of the groups for each statement and a short explanation of each group for each statement.
