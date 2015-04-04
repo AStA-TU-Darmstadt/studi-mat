@@ -1,7 +1,22 @@
 /*
 
+This file is part of studi-mat
 
+LICENSE:
 
+studi-mat is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 or 3 of the License, or
+(at your option) any later version.
+ 
+studi-mat is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Library General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 */
 
@@ -19,8 +34,6 @@ daten.gewichtung = new Array();
 daten.result     = new Array();
 
 currentContainer = 0;
-
-shareButton = '<div class="shariff" data-theme="standard" data-orientation="vertical" data-lang="de" data-services="[&quot;facebook&quot;,&quot;twitter&quot;]"></div>';
 
 // the object "daten" has the following structure
 // can be seen in the console of any browser (F12)
@@ -137,8 +150,8 @@ function makeHTML (){
 	$.each(daten.frage, function(num,quest){
 		
 		// create the question with all its beauty
-		newquestion = '<div class="question question'+num+'" data-number="'+num+'"><span class="shortquestion"><!--'+daten.kurzfragen[num]+'--> <span class="fragencounter">'+(parseInt(num)+1)+' von '+ (daten.frage.length)+'</span></span><br /><p class="questiontext">' + quest + '</p></div>';	
-		newquestion += '<div class="voting voting'+num+'" data-number="'+num+'"><a href="#" class="vote vote-ja" data-vote="1" data-number="'+num+'">Ja</a><a href="#" class="vote vote-enth" data-vote="0" data-number="'+num+'">Enthaltung</a><a href="#" class="vote vote-nein" data-vote="-1" data-number="'+num+'">Nein</a><a href="#" class="vote vote-ueber" data-vote="99" data-number="'+num+'">Überspringen</a></div>';
+		newquestion = '<div class="question question'+num+'" data-number="'+num+'"><span class="shortquestion"><!--'+daten.kurzfragen[num]+'--> <span class="fragencounter">'+(parseInt(num)+1)+' '+lang['of']+' '+ (daten.frage.length)+'</span></span><br /><p class="questiontext">' + quest + '</p></div>';	
+		newquestion += '<div class="voting voting'+num+'" data-number="'+num+'"><a href="#" class="vote vote-ja" data-vote="1" data-number="'+num+'">'+lang['yes']+'</a><a href="#" class="vote vote-enth" data-vote="0" data-number="'+num+'">'+lang['maybe']+'</a><a href="#" class="vote vote-nein" data-vote="-1" data-number="'+num+'">'+lang['no']+'</a><a href="#" class="vote vote-ueber" data-vote="99" data-number="'+num+'">'+lang['skip']+'</a></div>';
 		// append it to the DOM
 		$('#questions').append(newquestion);
 
@@ -347,10 +360,10 @@ function createResult() {
 	$.each(resorted, function(a,b){
 		// prozentual value:
 		doubles = daten.gewichtung.length
-		possiblePoint = 2*daten.frage.length + 2*doubles
+		possiblePoint = 2*daten.frage.length + 2*doubles // daten.frage.length ist quasi die mitte, also 0 punkte
 		reachedPoints = daten.frage.length+doubles + b
 		prozentual = Math.round(parseFloat(reachedPoints)/parseFloat(possiblePoint) * 10000)/100
-		//console.log("points", b, possiblePoint, reachedPoints, prozentual)
+
 		
 		langerParteiname = daten.partei[daten.parteiKurz.indexOf(a)];
 		
@@ -360,7 +373,7 @@ function createResult() {
 			nameForBarChart  = a
 		}
 		
-		//$('#result_short table').append('<tr><td>'+nameForBarChart+':</td><td class="expandShortCol"><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></tr>');
+		
 		
 		antiprozent = 100 - prozentual;
 		$('#result_short').append('<div class="result_new_partie"><div class="barchart_name" style="width:'+antiprozent+'%">'+nameForBarChart+':</div><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></div>');
@@ -403,7 +416,7 @@ function createResult() {
 		
 		reasonDiv = '<div id="'+id+'" class="reasonDiv">';
 		listP = '';
-		//console.log("Daten sortieren:", resorted, daten.partei, daten.wertung, daten.gruende)
+
 		
 		$.each(resorted, function(kurz, b){
 			
@@ -463,7 +476,7 @@ function createResult() {
 		$('#result_long table').append('<tr data-reason="'+id+'" class="result_reason"><td colspan="'+colspan+'">'+reasonDiv+'</td></tr>');
 		
 	});
-	//console.log(daten);
+
 	
 	
 	
@@ -498,7 +511,6 @@ function createResult() {
 		}
 	});
 	
-	//console.log("Fertig mit der Welt");
 }
 
 
@@ -537,7 +549,7 @@ function wahlomat(){
 	$('.container_1').show();
 	$('.container .containerFooter').each(function(a, b){
 		if(a != 0){
-			$(this).prepend('<div class="back button" id="showContainer'+a+'">zurück</div>');
+			$(this).prepend('<div class="back button" id="showContainer'+a+'">'+lang['back']+'</div>');
 			$('#showContainer'+a).on("click", function(){showContainer(a)});
 		}
 		

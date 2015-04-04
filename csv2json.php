@@ -1,10 +1,11 @@
 <?php
 //header("Content-Type: text/html; charset=utf-8");
 header('Content-Type: application/javascript;charset=utf-8');
+session_start();
 
 
+$file   = "data/daten_".$_SESSION['lang'].".csv";
 
-$file   = "data/daten.csv";
 
 # old loading, without linebreaks:
 #$myfile = fopen($file, "r") or die("Unable to open file!");

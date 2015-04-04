@@ -179,6 +179,7 @@ label, checkbox {
 }
 
 #middle, footer {
+	position: relative;
 	width:100%;
 	max-width: 680px; 
 	box-sizing: border-box;
@@ -194,6 +195,11 @@ label, checkbox {
 	width: 165px;
 	height: 85px;
 	display: block;
+}
+#language{
+	position: absolute;
+	top: 7px;
+	right: 10px;
 }
 
 /* Buttons */
