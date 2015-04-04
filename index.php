@@ -49,7 +49,7 @@
 
 		<meta name="author" content="Standard"/>
 		<meta name="description" content="Mat-O-Wahl" />
-		<meta name="keywords" content="Mat-O-Wahl, Wahl-O-Mat, TU Darmstadt, Hochschulwahlen"/>
+		<meta name="keywords" content="studi-mat, AStA, TU Darmstadt, Hochschulwahlen"/>
 
 		<meta name="language" content="de" />
 		<meta name="Content-Language" content="de" />
