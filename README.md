@@ -32,7 +32,7 @@ The resulting score can be from -n-d to n+d if n is the number of statements and
 
 ## TODO / Roadmap
 This list is ordered. Most important topics are on the top
- - recheck the calculating of the result
- - enable dual language support
+ - recheck the calculating of the result [done, should be correct]
+ - enable dual language support [in progress]
  - add the statments of the lists
- - decide for a license (GPL 3 would be best) and remove all not used licenses (should be done carefully)
+ - decide for a license (GPL 3 would be best) and remove all not used licenses (should be done carefully) [done, any GPL]
