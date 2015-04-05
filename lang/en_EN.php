@@ -16,20 +16,19 @@ $lang['losgehts'] = "start";
 
 
 // second page
-$lang['gewichtung'] = 'Was ist dir besonders wichtig?';
+$lang['gewichtung'] = 'What is important to you?';
 
-$lang['gtxt'] 			='<p>Hier kannst du beliebig viele Fragen auswählen, die dir besonders wichtig sind. Sie werden dann doppelt so viel berücksichtigt.</p>';
+$lang['gtxt'] 			='<p>Select as many statements as you like. They will be respected twice as much.</p>';
 
 $lang['next'] = 'Go to results';
 
 
 // third page
-$lang['result'] = '<p>Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>';
+$lang['result'] = '<p>The studi-mat calculated the following result for you. Down below you can see the positions of every group with their statements. Remember that this is service just provides you with information, it should not be misinterpreted as voting advice in any form.</p>';
 
 
-
-$lang['furtherinfos'] = '<h3>Weitere Informationen zur Wahl</h3>
-				<p>Viele weitere Infos zur diesjährigen Wahl und zur Hochschulpolitik an deiner Uni findest du in der Wahlzeitung und auf der Webseite deines AStA.</p>';
+$lang['furtherinfos'] = '<h3>Further informations</h3>
+				<p>More informations about the elections you will find on the webpages of the groups (may not be in english) and the official website of your students council (AStA).</p>';
 
 
 ?>

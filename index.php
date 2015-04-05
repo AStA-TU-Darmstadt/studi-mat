@@ -48,7 +48,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
 		<meta name="author" content="Standard"/>
-		<meta name="description" content="Mat-O-Wahl" />
+		<meta name="description" content="Studi-Mat" />
 		<meta name="keywords" content="studi-mat, AStA, TU Darmstadt, Hochschulwahlen"/>
 
 		<meta name="language" content="de" />
