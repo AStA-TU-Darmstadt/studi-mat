@@ -2,7 +2,7 @@
 
 // First page
 
-$lang['header'] = "High school elections 2015/2016";
+$lang['header'] = "University elections 2015/2016";
 
 $lang['js'] = '<strong>Ohne Java-Script geht hier leider nichts. Dafür berechnen wir auch alles nur auf deinem Gerät und senden deine Meinungen an keinen Server.<br />Deal?</strong>';
 
