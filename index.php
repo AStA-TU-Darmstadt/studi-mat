@@ -67,7 +67,7 @@
 	<body>
 		<div id="middle">
 
-			<a href="http://paulsaary.de/studi-mat/?lang=<?php echo $_SESSION['lang']; ?>" title="zur Startseite" id="logo"></a>
+			<a href="https://www.asta.tu-darmstadt.de/studi-mat/?lang=<?php echo $_SESSION['lang']; ?>" title="zur Startseite" id="logo"></a>
 	
 			<div id="language">
 				<?php if ($_SESSION['lang'] == "de"){
@@ -151,20 +151,27 @@
 				
 				
 				<p><strong>CampusGrüne</strong><br />
-				<a href="http://www.campusgruene.de/">www.campusgrüene.de</a>				
+				<a href="http://www.campusgruene.de">www.campusgrüene.de</a>				
 				</p>
 				<p><strong>Fachwerk</strong><br />
-				<a href="http://www.campusgruene.de/">www.campusgrüene.de</a>				
+				<a href="http://www.fachwerkhouse.de">www.fachwerkhouse.de</a>				
+				</p>
+				<p><strong>Ing+</strong><br />
+				<a href="http://ingplus.net">www.ingplus.net</a>				
 				</p>
 				<p><strong>JuSos</strong><br />
-				<a href="http://www.campusgruene.de/">www.campusgrüene.de</a>				
+				<a href="http://jusos-tud.de">www.jusos-tud.de</a>				
 				</p>
 				<p><strong>RCDS</strong><br />
-				<a href="http://www.campusgruene.de/">www.campusgrüene.de</a>				
+				<a href="http://www.rcds-darmstadt.de/">www.rcds-darmstadt.de</a>				
 				</p>
-				<p><strong>JuSos</strong><br />
-				<a href="http://www.campusgruene.de/">www.campusgrüene.de</a>				
+				<p><strong>SDS</strong><br />
+				<a href="https://sdstuda.wordpress.com/">sdstuda.wordpress.com</a>				
 				</p>
+				
+				
+				
+				
 			
 			
 <br class="clear" />
