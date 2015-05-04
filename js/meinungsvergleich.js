@@ -558,12 +558,13 @@ function wahlomat(){
 }
 
 $(document).ready(function(){
-	
+	startwahlomat = false; // no start yet
 	// start the "wahlomat"
 	wahlomat();
 	
 	$('#startmatowahl').click(function(){
 		$('.container_1').hide();
+		startwahlomat = true;
 		showQuestion(0);
 	});
 	
@@ -571,6 +572,27 @@ $(document).ready(function(){
 		calculateResult();
 	});
 	
+	
+	// callback for clicking on the logo or the language changer
+	// it will remove all answers givven to this point
+	// check the current status though, as it does only matter after clicking
+	// start
+	$('#language a').click(function(){
+		console.log("logo click", startwahlomat);
+		if(startwahlomat){
+			return (confirm(lang['switchLanguage']));
+		}else{
+			return true;
+		}
+	});
+	$('#logo').click(function(){
+		console.log("logo click", startwahlomat);
+		if(startwahlomat){
+			return (confirm(lang['logoClick']));
+		}else{
+			return true;
+		}
+	});
 	
 	
 });

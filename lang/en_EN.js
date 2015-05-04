@@ -14,3 +14,6 @@ lang['maybe'] 			= "maybe"
 lang['skip'] 			= "Skip"
 
 lang['back'] 			= "go back"
+
+lang['switchLanguage']	= "Changing the language will result in loosing all answers given to this point. Proceed?"
+lang['logoClick']		= "Reloading the page will cause loss of all answers given. Proceed?"
