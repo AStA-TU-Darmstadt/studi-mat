@@ -79,7 +79,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 140%;
-	border-top: 10px solid #f78b26
+	border-top: 10px solid #f2951f
 }
 ol, ul {
 	list-style: none;
@@ -100,7 +100,7 @@ p, table, #explanation {
 	margin: 12px 0;
 }
 a, a:hover, a:visited, a:active {
-	color: #f78b26;
+	color: #f2951f;
 	text-decoration: none;
 }
 a:hover {
@@ -191,7 +191,7 @@ label, checkbox {
 	display: none;
 }
 #logo {
-	background: url('../img/asta-tu-darmstadt-logo.png');
+	background: url('../img/studi-mat-logo.png');
 	width: 165px;
 	height: 85px;
 	display: block;
@@ -277,11 +277,11 @@ a.vote-ja, a.vote-nein, a.vote-enth {
 }
 /*
 a.vote:active, .button:active, .button.back:active {
-	background-color: #f78b26 
+	background-color: #f2951f 
 }*/
 
 a.vote:hover {
-	background-color: #f78b26 
+	background-color: #f2951f 
 }
 
 a.vote:hover.vote-ueber:active, a.vote-ueber:active {
@@ -320,7 +320,7 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 .question { 
 	height: auto;
 	margin: 15px 0 0 0;	
-	background: #f78b26;
+	background: #f2951f;
 	padding: 10px 10px 20px 10px;
 	min-height: 130px; 
 	
@@ -412,7 +412,7 @@ footer {
 	text-align: right;
 	color: #fff;
 	min-width: 30px;
-	background-color: #f78b26;
+	background-color: #f2951f;
 	box-sizing: border-box;
 }
 #result_long table {
@@ -429,7 +429,7 @@ footer {
 #result_long tr.showResult {
 	transition: background 0.1s linear;
 	font-weight: bold;
-	background-color: #f78b26 !important;
+	background-color: #f2951f !important;
 		
 }
 #result_long tr.showResult td:first-of-type{
@@ -453,7 +453,7 @@ footer {
 	background: #cecece
 }
 #result_long table tr.expandRow.double  {
-	background: #f7eb26
+	background: #f2951f
 }
 #result_long table tr.result_reason td {
 	padding: 0 6px 0 6px;
