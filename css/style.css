@@ -191,9 +191,9 @@ label, checkbox {
 	display: none;
 }
 #logo {
-	background: url('../img/studi-mat-logo.png');
-	width: 165px;
-	height: 85px;
+	background: url('../img/studi-mat-logo.png') center center;
+	width: 160px;
+	height: 84px;
 	display: block;
 }
 #language{
