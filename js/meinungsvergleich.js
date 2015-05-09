@@ -367,16 +367,18 @@ function createResult() {
 		
 		langerParteiname = daten.partei[daten.parteiKurz.indexOf(a)];
 		
-		if (langerParteiname.length < 12){
-			nameForBarChart  = langerParteiname
-		}else{
+		
+		
+		nameForBarChart  = langerParteiname
+		/* // if you want to restrict the name length, I dont
+		if (langerParteiname.length < 20){
 			nameForBarChart  = a
-		}
+		}*/
 		
 		
 		
 		antiprozent = 100 - prozentual;
-		$('#result_short').append('<div class="result_new_partie"><div class="barchart_name" style="width:'+antiprozent+'%">'+nameForBarChart+':</div><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></div>');
+		$('#result_short').append('<div class="result_new_partie"><div class="barchart_name" style="width:'+antiprozent+'%">'+nameForBarChart+'</div><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></div>');
 		
 	});
 	
@@ -578,6 +580,7 @@ $(document).ready(function(){
 	// check the current status though, as it does only matter after clicking
 	// start
 	$('#language a').click(function(){
+		console.log("logo click", startwahlomat);
 		if(startwahlomat){
 			return (confirm(lang['switchLanguage']));
 		}else{
@@ -585,6 +588,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#logo').click(function(){
+		console.log("logo click", startwahlomat);
 		if(startwahlomat){
 			return (confirm(lang['logoClick']));
 		}else{
