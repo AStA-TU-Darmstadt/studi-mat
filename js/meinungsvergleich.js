@@ -399,6 +399,7 @@ function createResult() {
 	colspan = colspan + 2;
 	alternatingClass = "alternate-1"; // for alternating the rows gray and not gray 
 	
+
 	$.each(daten.frage, function(n, frage){
 		index         = n;
 
@@ -476,7 +477,7 @@ function createResult() {
 		
 		$('#result_long table').append('<tr class="expandRow ' + alternatingClass + ' ' + doubleclass +'" data-question="'+id+'"><td>' +frage+'</td><td class="ownresult">'+div+'</td>'+listP+'</tr>');
 		$('#result_long table').append('<tr data-reason="'+id+'" class="result_reason"><td colspan="'+colspan+'">'+reasonDiv+'</td></tr>');
-		
+
 	});
 
 	
@@ -486,6 +487,10 @@ function createResult() {
 	$('.container_4').show();
 	// always go to the top:
 	window.scrollTo(0, 0);
+	
+	// show first answer:
+	$('#0').show(); 
+	$('tr.expandRow[data-question="0"]').addClass("showResult");
 	
 	// click on result
 	$('tr.expandRow').on("click",function(){

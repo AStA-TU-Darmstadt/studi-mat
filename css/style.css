@@ -280,8 +280,11 @@ a.vote:active, .button:active, .button.back:active {
 	background-color: #f2951f 
 }*/
 
-a.vote:hover {
-	background-color: #f2951f 
+/* hover just for large screens, because they might have a mouse */
+@media (min-device-width: 800px) {
+	a.vote:hover {
+		text-decoration: underline ; /*#f2951f*/
+	}
 }
 
 a.vote:hover.vote-ueber:active, a.vote-ueber:active {

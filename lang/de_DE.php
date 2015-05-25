@@ -25,7 +25,7 @@ $lang['losgehts'] = "los gehts";
 // second page
 $lang['gewichtung'] = 'Was ist dir besonders wichtig?';
 
-$lang['gtxt'] 			='<p>Hier kannst du beliebig viele Statements auswählen, die dir besonders wichtig sind. Sie werden dann doppelt so viel berücksichtigt.</p>';
+$lang['gtxt'] 			='<p>Hier kannst du beliebig viele Statements auswählen, die dir besonders wichtig sind. Sie werden dann doppelt gewichtet.</p>';
 
 
 $lang['next'] = 'Weiter zur Auswertung';
