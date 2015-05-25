@@ -162,9 +162,7 @@
 				<p><strong>JuSos</strong><br />
 				<a href="http://jusos-tud.de">www.jusos-tud.de</a>				
 				</p>
-				<p><strong>RCDS</strong><br />
-				<a href="http://www.rcds-darmstadt.de/">www.rcds-darmstadt.de</a>				
-				</p>
+				
 				<p><strong>SDS</strong><br />
 				<a href="https://sdstuda.wordpress.com/">sdstuda.wordpress.com</a>				
 				</p>

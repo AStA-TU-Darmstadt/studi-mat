@@ -24,7 +24,7 @@ $lang['next'] = 'Go to results';
 
 
 // third page
-$lang['result'] = '<p>The studi-mat calculated the following result for you. Down below you can see the positions of every group with their statements. Remember that this is service just provides you with information, it should not be misinterpreted as voting advice in any form.</p>';
+$lang['result'] = '<p>The studi-mat calculated the following result for you. Down below you can see the positions and a detailed answer (click on the question) of every group with their statements. Remember that this is service just provides you with information, it should not be misinterpreted as voting advice in any form.</p>';
 
 
 $lang['furtherinfos'] = '<h3>Further informations</h3>

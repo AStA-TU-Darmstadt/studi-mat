@@ -32,7 +32,7 @@ $lang['next'] = 'Weiter zur Auswertung';
 
 
 // third page
-$lang['result'] = '<p>Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>';
+$lang['result'] = '<p>Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen mit Begründungen (klick auf die Frage) der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>';
 
 
 
