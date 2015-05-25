@@ -580,7 +580,6 @@ $(document).ready(function(){
 	// check the current status though, as it does only matter after clicking
 	// start
 	$('#language a').click(function(){
-		console.log("logo click", startwahlomat);
 		if(startwahlomat){
 			return (confirm(lang['switchLanguage']));
 		}else{
@@ -588,7 +587,6 @@ $(document).ready(function(){
 		}
 	});
 	$('#logo').click(function(){
-		console.log("logo click", startwahlomat);
 		if(startwahlomat){
 			return (confirm(lang['logoClick']));
 		}else{

@@ -4,10 +4,19 @@
 
 $lang['header'] = "University elections 2015/2016";
 
-$lang['js'] = '<strong>Ohne Java-Script geht hier leider nichts. Dafür berechnen wir auch alles nur auf deinem Gerät und senden deine Meinungen an keinen Server.<br />Deal?</strong>';
+$lang['js'] = '<strong>Without Java-Script there is not much we can do here</strong>';
 
 $lang['einleitung'] = '
-	<p>To be translated<p>
+	<p><strong>We do not save any data on this site. All your answers stay on your device.</strong>
+	This does also mean, that you will loose all your results once you leave this page or reload it.</p>
+	
+	<p>With university elections 2015 you do not only have the chance to elect your "Fachschaftsräte" and  your representatives in the "Fachbereichsrat" but also your representatives in the "Studierendenparlament" and the "Universitätsversammlung"</p>
+				
+				
+				<p><strong>15th june - 18th june 2015 (10:30am - 14:30am)</strong><br />
+				cafeteria city center and  Hörsaal-Medienzentrum Lichtwiese</p>
+	
+				<p>This is no voting advice but only a offer to inform yourself about the current positions of all the participating groups.</p>
 ';
 
 

@@ -9,9 +9,9 @@ $lang['js'] = '<strong>Ohne Java-Script geht hier leider nichts. Dafür berechne
 $lang['einleitung'] = '
 	<p><strong>Wir speichern auf dieser Seite keine Daten. Deine Antworten werden nur auf deinem Gerät (Computer, Handy, etc.) ausgewertet und an keinen Server gesendet.</strong> Das heißt aber auch, dass deine Antworten verloren gehen, sobald du diese Seite neu läds oder verlässt.</p>
 				
-				<p>Kurze Beschreibung der Wahl, wer wird gew&auml;hlt, wann, warum, f&uuml;r wie lange, usw. Kurze Beschreibung der Wahl, wer wird gew&auml;hlt, wann, warum, f&uuml;r wie lange, usw. Kurze Beschreibung der Wahl, wer wird gew&auml;hlt, wann, warum, f&uuml;r wie lange, usw.</p>
+<p>Bei den Hochschulwahlen 2015 werden nicht nur die Fachschaftsräte und der Fachbereichsrat, sondern auch die studentischen Vertrerter*innen für das Stuierendenparlement und die Universitätsversammlung gewählt.</p>
 				
-				<p><strong>15. Juni. - 18. Juni .2015</strong><br />
+				<p><strong>15. Juni - 18. Juni 2015 (jeweils von 10:30-14:30 Uhr)</strong><br />
 				Mensa Stadtmitte oder Hörsaal-Medienzentrum Lichtwiese</p>
 	
 				<p>Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>
