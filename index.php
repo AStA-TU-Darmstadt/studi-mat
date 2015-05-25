@@ -159,7 +159,7 @@
 				<p><strong>Ing+</strong><br />
 				<a href="http://ingplus.net">www.ingplus.net</a>				
 				</p>
-				<p><strong>JuSos</strong><br />
+				<p><strong>Jusos und Unabhängige</strong><br />
 				<a href="http://jusos-tud.de">www.jusos-tud.de</a>				
 				</p>
 				
