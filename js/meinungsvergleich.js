@@ -378,7 +378,7 @@ function createResult() {
 		
 		
 		antiprozent = 100 - prozentual;
-		$('#result_short').append('<div class="result_new_partie"><div class="barchart_name" style="width:'+antiprozent+'%">'+nameForBarChart+'</div><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></div>');
+		$('#result_short').append('<div class="result_new_partie"><div class="barchart_name" >'+nameForBarChart+'</div><div class="barchart" style="width:'+prozentual+'%">'+prozentual+'%</div></div>');
 		
 	});
 	
