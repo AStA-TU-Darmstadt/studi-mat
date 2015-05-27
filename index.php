@@ -58,7 +58,7 @@
 
 
 
-		<title>studi-mat AStA der TU Darmstadt</title>
+		<title>Studi-Mat - AStA der TU Darmstadt</title>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css" >
 		<link href="shariff/shariff.complete.css" rel="stylesheet">
