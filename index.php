@@ -214,21 +214,9 @@
 		<script type="text/javascript" src="js/meinungsvergleich.js"></script>
 		<script src="shariff/shariff.min.js"></script>
 
-		<!-- Piwik -->
-		<script type="text/javascript">
-		  var _paq = _paq || [];
-		  _paq.push(['trackPageView']);
-		  _paq.push(['enableLinkTracking']);
-		  (function() {
-			var u="//www.asta.tu-darmstadt.de/piwik/";
-			_paq.push(['setTrackerUrl', u+'piwik.php']);
-			_paq.push(['setSiteId', 1]);
-			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-		  })();
-		</script>
-		<noscript><p><img src="//www.asta.tu-darmstadt.de/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-		<!-- End Piwik Code -->
-
+<?php
+if(file_exists('_tracking.php'))
+    include '_tracking.php';
+?>
 	</body>
 </html>
