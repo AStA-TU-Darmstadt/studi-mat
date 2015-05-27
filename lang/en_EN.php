@@ -37,7 +37,7 @@ $lang['result'] = '<p>The studi-mat calculated the following result for you. Dow
 
 
 $lang['furtherinfos'] = '<h3>Further informations</h3>
-				<p>More informations about the elections you will find on the webpages of the groups (may not be in english) and the official website of your students council (AStA).</p>';
+				<p>More informations about the elections you will find on the webpages of the groups (may not be in english) and the official website of your students council (AStA). <a href="https://www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen">www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen</a></p>';
 
 
 ?>
