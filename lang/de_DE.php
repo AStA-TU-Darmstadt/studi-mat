@@ -7,7 +7,7 @@ $lang['header'] = "Hochschulwahlen 2015/2016";
 $lang['js'] = '<strong>Ohne Java-Script geht hier leider nichts. Dafür berechnen wir auch alles nur auf deinem Gerät und senden deine Meinungen an keinen Server.<br />Deal?</strong>';
 
 $lang['einleitung'] = '
-	<p><strong>Wir speichern auf dieser Seite keine Daten. Deine Antworten werden nur auf deinem Gerät (Computer, Handy, etc.) ausgewertet und an keinen Server gesendet.</strong> Das heißt aber auch, dass deine Antworten verloren gehen, sobald du diese Seite neu läds oder verlässt.</p>
+	<p><strong>Deine Antworten werden nur auf deinem Gerät (Computer, Handy, etc.) ausgewertet und an keinen Server gesendet.</strong> Das heißt aber auch, dass deine Antworten verloren gehen, sobald du diese Seite neu läds oder verlässt.</p>
 				
 <p>Bei den Hochschulwahlen 2015 werden nicht nur die Fachschaftsräte und der Fachbereichsrat, sondern auch die studentischen Vertrerter*innen für das Stuierendenparlement und die Universitätsversammlung gewählt.</p>
 				
