@@ -18,7 +18,7 @@ $lang['einleitung'] = '
 ';
 
 
-$lang['losgehts'] = "los gehts";
+$lang['losgehts'] = "los geht's";
 
 
 
