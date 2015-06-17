@@ -32,7 +32,7 @@ var helper = function(){
   self.getURLparam = function(key) {
     var parser = document.createElement('a');
     parser.href = location.href;
-    var queries = parser.search.replace(/^\?/, '').split('&');
+    var queries = parser.search.replace(/^\?/, '').replace(/\/$/, '').split('&');
     for(var i = 0; i < queries.length; i++) {
       var query = queries[i].split('=');
       if (query.length == 2 && query[0] == key) {
