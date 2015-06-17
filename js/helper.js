@@ -43,15 +43,16 @@ var helper = function(){
     return "";
   }
 
-
   /* updateLanguage updates the language according to the "data-studimat-lang"
    * tags of the HTML elements with the given language array */
   self.updateLanguage = function(language_array) {
     $('[data-studimat-lang]').each(function(key, val){
       var lang_val = $(val).attr("data-studimat-lang");
 
-      if (language_array[lang_val] != undefined) {
+      if (language_array[lang_val] != undefined &&
+          $(val).attr("data-studimat-lang-lastval") != language_array[lang_val]) {
         $(val).html(language_array[lang_val]);
+        $(val).attr("data-studimat-lang-lastval", language_array[lang_val]);
       }
     });
   }
