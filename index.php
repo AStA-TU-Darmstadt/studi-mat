@@ -30,7 +30,7 @@
 	</head>
 	<body>
 		<div id="middle">
-			<a id="logo" href="?" title="zur Startseite"></a>
+			<a id="logo" href="./" title="zur Startseite"></a>
 			<a id="language" href="javascript:toggleLanguage()" data-studimat-lang="switchLangShort"></a>
 
 			<h1 data-studimat-lang="header"></h1>
