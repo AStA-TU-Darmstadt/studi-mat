@@ -77,7 +77,7 @@ function readData(jsondata) {
 			// d = content of the table cell defined by a and c
 
 			// if first line, then we save the parties
-			if(a == 0 ){
+			if(a == 0){
 
 				// if its an even number greater then 1 it is a short version of the partys name (eg. SPD etc.)
 				if (c % 2 != 0 && c > 1) {
@@ -90,14 +90,14 @@ function readData(jsondata) {
 			// lines > 0 --> data
 			if(a > 0){
 				// first column is the question in short as a descriptor
-				if(c == 0 ){
+				if(c == 0){
 					daten.kurzfragen.push(d);
 					// make an own array for each question to save value (wertung) and the reasons (gruende):
 					daten.wertung[(parseInt(a)-1)] = new Array();
 					daten.gruende[(parseInt(a)-1)] = new Array();
 				}else if(c == 1){
 					// it is a long question
-					daten.frage.push(d);
+					daten.frage.push(d.replace(/\n/, '</p><p>'));
 				}else if(c > 1 && c % 2 != 0){
 					// second column or bigger and no reason but a number
 					// but for which partie?
@@ -134,7 +134,7 @@ function readData(jsondata) {
 /*
  * This function takes the data and makes the questionscontainer
 */
-function makeHTML (){
+function makeHTML() {
 
 	// hide the questions first
 	$('#questioncontainer').hide();
