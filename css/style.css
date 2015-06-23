@@ -48,7 +48,7 @@
 
 
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -61,8 +61,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -73,7 +73,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -135,7 +135,7 @@ ul, ol {
 	margin-left:40px;
 }
 ul li {
-	list-style-type: square 
+	list-style-type: square
 }
 
 strong, b {
@@ -148,7 +148,7 @@ body {
 	font-family: Roboto, Arial, sans-serif;
 	font-size: 14px;
 	line-height: 140%;
-	background-color:#fff; 
+	background-color:#fff;
 	color:#000000;
 	font-weight: 400;
 }
@@ -164,7 +164,7 @@ body {
 
 
 
-td { 
+td {
 	padding: 4px 0  4px 0;
 }
 label, checkbox {
@@ -174,18 +174,18 @@ label, checkbox {
 	text-align: center;
 }
 .clear {
-	clear: both 
-	
+	clear: both
+
 }
 
 #middle, footer {
 	position: relative;
 	width:100%;
-	max-width: 680px; 
+	max-width: 680px;
 	box-sizing: border-box;
-	text-align:left; 
+	text-align:left;
 	padding: 10px;
-	margin: auto auto; 
+	margin: auto auto;
 }
 .container {
 	display: none;
@@ -252,11 +252,11 @@ label, checkbox {
 	color: #000;
 	text-decoration: none;
 	min-width: 50px;
-	
+
 }
 
 .vote-ueber {
-	
+
 }
 /* colors of vote buttons */
 /*
@@ -269,7 +269,7 @@ a.vote-nein, .colorno{
 }
 a.vote-enth, .colornone{
 	background: #FFEE00;
-	
+
 }*/
 a.vote-ja, a.vote-nein, a.vote-enth {
 	background: #000;
@@ -277,7 +277,7 @@ a.vote-ja, a.vote-nein, a.vote-enth {
 }
 /*
 a.vote:active, .button:active, .button.back:active {
-	background-color: #f2951f 
+	background-color: #f2951f
 }*/
 
 /* hover just for large screens, because they might have a mouse */
@@ -288,7 +288,7 @@ a.vote:active, .button:active, .button.back:active {
 }
 
 a.vote:hover.vote-ueber:active, a.vote-ueber:active {
-	background-color: transparent 
+	background-color: transparent
 }
 
 
@@ -320,13 +320,13 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 	text-indent: -9999em;
 }
 
-.question { 
+.question {
 	height: auto;
-	margin: 15px 0 0 0;	
+	margin: 15px 0 0 0;
 	background: #f2951f;
 	padding: 10px 10px 20px 10px;
-	min-height: 130px; 
-	
+	min-height: 130px;
+
 }
 
 .question p.questiontext {
@@ -335,9 +335,9 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 }
 /* for handlheld smaller question text*/
 @media (max-width: 600px ) {
-	.question { 
-		min-height: 100px; 
-	
+	.question {
+		min-height: 100px;
+
 	}
 	.question p.questiontext {
 		font-size: 13pt;
@@ -359,16 +359,16 @@ span.shortquestion {
 
 
 .containerFooter {
-	margin-top: 25px;
+	padding-top: 2em;
 	clear: both;
 }
 footer {
 	text-align: right;
 	clear: both;
-	
+
 }
 .shariff {
-	float: right
+	float: right;
 }
 #extras {
 	float: right;
@@ -403,9 +403,9 @@ footer {
 }
 .barchart_name, .barchart {
 	padding: 3px;
-} 
+}
 .barchart_name {
-	
+
 	position: absolute;
 	top: 0px
 	box-sizing: border-box;
@@ -433,7 +433,7 @@ footer {
 	transition: background 0.1s linear;
 	font-weight: bold;
 	background-color: #f2951f !important;
-		
+
 }
 #result_long tr.showResult td:first-of-type{
 	background: url('../img/pfeil2.png') 3px 10px no-repeat !important;
@@ -501,4 +501,3 @@ footer {
 .result_reason .reasonDiv {
 	display: none
 }
-
