@@ -1,0 +1,46 @@
+{
+  "parties": [
+    {
+      "id": 0,
+      "short": "PdSME",
+      "long": "Partei der Studi-Mat-Entwickler"
+    },
+    {
+      "id": 8,
+      "short": "PdSMB",
+      "long": "Partei der Studi-Mat-Benutzer"
+    }
+  ],
+  "questions": [
+    {
+      "short": "Sollte der Studi-Mat benutzerfreudlich sein?",
+      "long": "Das hilft bei der Bendienung",
+      "answeres": [
+        {
+          "partyid": 8,
+          "decision": 1,
+          "statement": "Wir als Nutzer finden das gut, wir kennen uns nämlich nicht mit Javascript aus."
+        },
+        {
+          "partyid": 0,
+          "decision": -1,
+          "statement": "Wir als Entwickler verstehen die Probleme der Nutzer sowieso nicht."
+        }
+      ]
+    },
+    {
+      "short": "Noch ne frage!",
+      "long": "...",
+      "answeres": [
+        {
+          "decision": 1,
+          "statement": "Wir als Entwickler finden noch ne frage gut."
+        },
+        {
+          "decision": 1,
+          "statement": "Wir als Nutzer auch."
+        }
+      ]
+    }
+  ]
+}

@@ -7,10 +7,9 @@
          url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'),
          url('../fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
     font-weight: 400;
-    font-style: normal;
-}
-@font-face {
+    font-style: normal; }
 
+@font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Bold-webfont.eot');
     src: url('../fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -18,9 +17,7 @@
          url('../fonts/Roboto-Bold-webfont.ttf') format('truetype'),
          url('../fonts/Roboto-Bold-webfont.svg#robotobold') format('svg');
     font-weight: 700;
-    font-style: normal;
-
-}
+    font-style: normal; }
 
 @font-face {
     font-family: 'Roboto Slab';
@@ -30,9 +27,8 @@
          url('../fonts/RobotoSlab-Regular-webfont.ttf') format('truetype'),
          url('../fonts/RobotoSlab-Regular-webfont.svg#roboto_slabregular') format('svg');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal; }
 
-}
 @font-face {
     font-family: 'roboto_slabbold';
     src: url('../fonts/RobotoSlab-Bold-webfont.eot');
@@ -41,17 +37,11 @@
          url('../fonts/RobotoSlab-Bold-webfont.ttf') format('truetype'),
          url('../fonts/RobotoSlab-Bold-webfont.svg#roboto_slabbold') format('svg');
     font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
+    font-style: normal; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+ * v2.0 | 20110126
+ * License: none (public domain) */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -65,93 +55,107 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+  display: block; }
+
 body {
-	line-height: 140%;
-	border-top: 10px solid #f2951f
-}
+  line-height: 140%;
+  border-top: 10px solid #f2951f }
+
 ol, ul {
-	list-style: none;
-}
+  list-style: none; }
+
 blockquote, q {
-	quotes: none;
-}
+  quotes: none; }
+
 blockquote:before, blockquote:after,
+
 q:before, q:after {
-	content: '';
-	content: none;
-}
+  content: '';
+  content: none; }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+  border-collapse: collapse;
+  border-spacing: 0; }
+/* END OF reset */
+
 p, table, #explanation {
-	margin: 12px 0;
-}
+  margin: 12px 0; }
+
 a, a:hover, a:visited, a:active {
-	color: #f2951f;
-	text-decoration: none;
-}
+  color: #f2951f;
+  text-decoration: none; }
+
 a:hover {
-	text-decoration: underline;
-}
+  text-decoration: underline; }
+
 p, table, ul, ol {
-	line-height: 140%;
-	font-size: 14px;
-	margin:8px 0 12px 0;
-}
+  line-height: 140%;
+  font-size: 14px;
+  margin:8px 0 12px 0; }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Roboto Slab;
-	font-weight: 500;
-}
+  font-family: Roboto Slab;
+  font-weight: 500; }
+
 h1 {
-	font-size: 17pt;
-	margin: 20px 0 10px 0
-}
+  font-size: 17pt;
+  margin: 20px 0 10px 0 }
 
 h2 {
-	font-size: 14pt;
-	margin: 18px 0 10px 0
-}
-h3 {
-	margin: 20px 0 10px 0;
-	font-weight: 700;
-}
+  font-size: 14pt;
+  margin: 18px 0 10px 0 }
 
+h3 {
+  margin: 20px 0 10px 0;
+  font-weight: 700; }
 
 ul, ol {
-	margin-left:40px;
-}
+  margin-left:40px; }
+
 ul li {
-	list-style-type: square
-}
+  list-style-type: square }
 
 strong, b {
-	font-weight: 700
-}
-
-
+  font-weight: 700 }
 
 body {
-	font-family: Roboto, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 140%;
-	background-color:#fff;
-	color:#000000;
-	font-weight: 400;
-}
+  padding-bottom: 8em;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+  background-color: #fff;
+  color: #000;
+  font-weight: 400; }
+
+.fullpage {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0; }
+
+noscript .fullpage {
+  background-color: #000; /* fallback */
+  background-color: rgba(0, 0, 0, 0.6); }
+
+noscript .fullpage-notify {
+  margin-top: 10%;
+  padding: 5em 20%;
+  background-color: white; }
+
+.unstyled, .unstyled li {
+  list-style: none;
+  list-style-type: none; }
+
+.initiallyhidden {
+  display: none; }
 
 .voting:after, #questioncontainer:after, #jumpto:after,.result_new_partie:after {
     clear: both;
@@ -159,345 +163,280 @@ body {
     display: block;
     font-size: 0;
     height: 0;
-    visibility: hidden;
-}
-
-
+    visibility: hidden; }
 
 td {
-	padding: 4px 0  4px 0;
-}
+  padding: 4px 0  4px 0; }
+
 label, checkbox {
-	cursor: pointer;
-}
+  cursor: pointer; }
+
 .center {
-	text-align: center;
-}
+  text-align: center; }
+
 .clear {
-	clear: both
+  clear: both; }
 
-}
+.main-wrapper, footer {
+  position: relative;
+  width:100%;
+  max-width: 680px;
+  box-sizing: border-box;
+  text-align:left;
+  padding: 1em;
+  margin: auto auto; }
 
-#middle, footer {
-	position: relative;
-	width:100%;
-	max-width: 680px;
-	box-sizing: border-box;
-	text-align:left;
-	padding: 10px;
-	margin: auto auto;
-}
-.container {
-	display: none;
-}
 #logo {
-	background: url('../img/studi-mat-logo.png') center center;
-	width: 160px;
-	height: 84px;
-	display: block;
-}
+  background: url('../img/studi-mat-logo.png') center center;
+  width: 160px;
+  height: 84px;
+  display: block; }
+
 #language{
-	position: absolute;
-	top: 7px;
-	right: 10px;
-}
+  position: absolute;
+  top: 7px;
+  right: 10px; }
 
 /* Buttons */
 #startmatowahl, .button {
-	display: inline-block;
-	padding: 8px 12px;
-	margin: 0 0 8px 0;
-	color: #fff;
-	cursor: pointer;
-	background: #55BD00;
-	transition: background 0.05s linear;
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 0 8px 0;
+  color: #fff;
+  cursor: pointer;
+  background: #55BD00;
+  transition: background 0.05s linear; }
 
-}
 .button {
-	float: right;
-}
+  float: right; }
+
 #startmatowahl {
-	float: left;
-}
+  float: left; }
+
 #startmatowahl:hover, .button:hover {
-	background: #50B200 ;
-}
+  background: #50B200 ; }
+
 .button.back {
-	clear: both;
-	float: left;
-	background-color: #F0F0F0 !important;
-	color: #000;
-	transition: background 0.07s linear;
-}
+  clear: both;
+  float: left;
+  background-color: #F0F0F0 !important;
+  color: #000;
+  transition: background 0.07s linear; }
+
 .button.back:hover {
-	clear: both;
-	float: left;
-	background-color: #cecece !important;
-}
-
-
+  clear: both;
+  float: left;
+  background-color: #cecece !important; }
 
 #questioncontainer {
-	margin: 15px 0 15px 0;
-}
-
+  margin: 15px 0 15px 0; }
 
 .vote, a.vote:hover, a.vote:visited {
-	width: auto;
-	float: left;
-	margin-left: 1px;
-	padding: 8px 18px;
-	text-align: center;
-	cursor: pointer;
-	color: #000;
-	text-decoration: none;
-	min-width: 50px;
+  width: auto;
+  float: left;
+  margin-left: 1px;
+  padding: 8px 18px;
+  text-align: center;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  min-width: 50px; }
 
-}
-
-.vote-ueber {
-
-}
 /* colors of vote buttons */
 /*
-a.vote-ja, .coloryes{
-	background: #55BD00;
-}
-a.vote-nein, .colorno{
-	background: #C40000;
-	color: #fff !important;
-}
-a.vote-enth, .colornone{
-	background: #FFEE00;
+a.vote-yes, .coloryes{
+  background: #55BD00; }
+a.vote-abstain, .colorno{
+  background: #C40000;
+  color: #fff !important; }
+a.vote-skip, .colornone{
+  background: #FFEE00;
 
 }*/
-a.vote-ja, a.vote-nein, a.vote-enth {
-	background: #000;
-	color: #fff !important;
-}
+a.vote-yes, a.vote-no, a.vote-abstain {
+  background: #000;
+  color: #fff !important; }
+
 /*
 a.vote:active, .button:active, .button.back:active {
-	background-color: #f2951f
+  background-color: #f2951f
 }*/
 
 /* hover just for large screens, because they might have a mouse */
 @media (min-device-width: 800px) {
-	a.vote:hover {
-		text-decoration: underline ; /*#f2951f*/
-	}
+  a.vote:hover {
+    text-decoration: underline ; /*#f2951f*/
+  }
 }
 
-a.vote:hover.vote-ueber:active, a.vote-ueber:active {
-	background-color: transparent
-}
+a.vote:hover.vote-skip:active, a.vote-skip:active {
+  background-color: transparent }
 
+.vote-skip, a.vote:hover.vote-skip {
+  background: transparent;
+  margin-right: 1px;
+  padding: 0;
+  margin: 20px 0 25px 0;
+  font-size: 9pt;
+  text-align: center;
+  cursor: pointer;
+  clear: left;
+  float: right; }
 
-
-.vote-ueber, a.vote:hover.vote-ueber {
-	background: transparent;
-	margin-right: 1px;
-	padding: 0;
-	margin: 20px 0 25px 0;
-	font-size: 9pt;
-	text-align: center;
-	cursor: pointer;
-	clear: left;
-	float: right;
-}
 #jumpto {
-	float: left;
-	margin-top: 10px;
-	display: none
-}
+  float: left;
+  margin-top: 10px;
+  display: none }
+
 .jumpto {
-	cursor: pointer;
-	display: inline-block;
-	height: 5px;
-	width: 5px;
-	border-radius: 5px;
-	margin-right: 5px;
-	background: #000;
-	text-indent: -9999em;
-}
+  cursor: pointer;
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  background: #000;
+  text-indent: -9999em; /** TODO: ??? */ }
 
 .question {
-	height: auto;
-	margin: 15px 0 0 0;
-	background: #f2951f;
-	padding: 10px 10px 20px 10px;
-	min-height: 130px;
+  height: auto;
+  min-height: 130px;
+  margin: 15px 0 0 0;
+  background: #f2951f;
+  padding: 10px 10px 20px 10px; }
 
-}
+.question .question-counter {
+  float: right; }
 
-.question p.questiontext {
-	margin:0 0 7px 0;
-	font-size: 16pt;
-}
+.question .question-short {
+  font-size: 1.5em; }
+
+.question .question-long {
+  font-size: 1em; }
+
 /* for handlheld smaller question text*/
 @media (max-width: 600px ) {
-	.question {
-		min-height: 100px;
+  .question {
+    min-height: 100px; }
+}
 
-	}
-	.question p.questiontext {
-		font-size: 13pt;
-		}
-}
-.question p a, .question p  a:hover, .question p a:visited, .question p a:active {
-	color: #ffffff /* color for links in the question box */
-}
-span.shortquestion {
-	font-size: 9pt;
-	float: right;
-}
+.question a, .question a:hover, .question a:visited, .question a:active {
+  color: #ffffff; }
 
 .voting {
-	margin-top: 1px;
-	float: right;
-}
-
-
+  margin-top: 1px;
+  float: right; }
 
 .containerFooter {
-	padding-top: 2em;
-	clear: both;
-}
-footer {
-	text-align: right;
-	clear: both;
+  padding-top: 2em;
+  clear: both; }
 
-}
+footer {
+  text-align: right;
+  clear: both; }
+
 .shariff {
-	float: right;
-}
+  float: right; }
+
 #extras {
-	float: right;
-	clear: right;
-	margin-top: 4px;
-}
+  float: right;
+  clear: right;
+  margin-top: 4px; }
 
 .trackingOptOut {
-	clear: both;
-	color: #696969;
-	padding-top: 12px;
-}
-
+  clear: both;
+  color: #696969;
+  padding-top: 12px; }
 
 /* resultpage*/
 #result_short, #result_long {
-	margin: 30px 0;
-}
-#result_short table{
-	width: 100%;
-}
+  margin: 30px 0; }
+
 .expandShortCol {
-	width: 80%;
-	min-width: 100px;
-}
+  width: 80%;
+  min-width: 100px; }
 
 .result_new_partie {
-	margin-bottom: 6px;
-	font-weight: 700;
-	background: #F0F0F0;
-	position: relative;
-}
+  margin-bottom: 6px;
+  font-weight: 700;
+  background: #F0F0F0;
+  position: relative; }
+
 .barchart_name, .barchart {
-	padding: 3px;
-}
+  padding: 3px; }
+
 .barchart_name {
+  position: absolute;
+  top: 0;
+  box-sizing: border-box; }
 
-	position: absolute;
-	top: 0px
-	box-sizing: border-box;
-}
 .barchart {
-	float: right;
-	text-align: right;
-	color: #fff;
-	min-width: 30px;
-	background-color: #f2951f;
-	box-sizing: border-box;
-}
-#result_long table {
-	width: 100%;
-}
+  float: right;
+  text-align: right;
+  color: #fff;
+  min-width: 30px;
+  background-color: #f2951f;
+  box-sizing: border-box; }
 
-#result_long table tr th, #result_long table tr td{
-	padding: 6px 3px 6px 3px;
-}
-#result_long table tr th {
-	font-weight: 700;
-	text-align: center;
-}
+#result_long {
+  width: 100%; }
+
+#result_long tr th, #result_long tr td{
+  padding: 6px 3px 6px 3px; }
+
+#result_long tr th {
+  font-weight: 700;
+  text-align: center; }
+
 #result_long tr.showResult {
-	transition: background 0.1s linear;
-	font-weight: bold;
-	background-color: #f2951f !important;
+  transition: background 0.1s linear;
+  font-weight: bold;
+  background-color: #f2951f !important; }
 
-}
-#result_long tr.showResult td:first-of-type{
-	background: url('../img/pfeil2.png') 3px 10px no-repeat !important;
-	padding-left: 16px;
-}
+#result_long tr.showResult td:first-of-type {
+  background: url('../img/pfeil2.png') 3px 10px no-repeat !important;
+  padding-left: 16px; }
 
-#result_long table tr.expandRow {
-	transition: background 0.08s linear;
-	cursor: pointer;
-}
-#result_long table tr.expandRow td:first-of-type{
-	background: url('../img/pfeil1.png') 3px 10px no-repeat;
-	padding-left: 16px;
-}
-#result_long table tr.expandRow.alternate-2{
-	background: #F0F0F0
-}
+#result_long tr.expandRow {
+  transition: background 0.08s linear;
+  cursor: pointer; }
 
-#result_long table tr.expandRow:hover  {
-	background: #cecece
-}
-#result_long table tr.expandRow.double  {
-	background: #f2951f
-}
-#result_long table tr.result_reason td {
-	padding: 0 6px 0 6px;
-}
-#result_long table tr td.ownresult {
-	border-left: 1px solid #757575;
-	border-right: 1px solid #757575;
+#result_long tr.expandRow td:first-of-type {
+  background: url('../img/pfeil1.png') 3px 10px no-repeat;
+  padding-left: 16px; }
 
-}
+#result_long tr.expandRow.alternate2 {
+  background: #F0F0F0; }
 
+#result_long tr.expandRow:hover  {
+  background: #cecece }
 
+#result_long tr.expandRow.double {
+  background: #f2951f }
 
-.reasonDiv {
-	margin-left: 25px;
-	margin-bottom: 10px;
-}
-.reasonDiv h3 {
-	font-weight: 700;
-}
+#result_long tr td.ownresult {
+  border-left: 1px solid #757575;
+  border-right: 1px solid #757575; }
+
+.result_reason {
+  padding: .5em .5em 1.5em 2em; }
 
 /*icons*/
-.w_pro, .w_against, .w_equal,.w_skip {
-	background-image: url('../img/icons_minimal.png');
-	width: 16px;
-	height: 16px;
-	background-position: 0px 0px;
-	margin: 0 auto;
-}
-.w_pro {
-	background-position: 0px 0px
-}
-.w_against {
-	background-position: -16px 0px
-}
-.w_equal {
-	background-position: -32px 0px
-}
-.w_skip {
-	background-position: -48px 0px
-}
+.w_positive, .w_negative, .w_neutral,.w_skip {
+  background-image: url('../img/icons_minimal.png');
+  width: 16px;
+  height: 16px;
+  background-position: 0 0;
+  margin: 0 auto; }
 
-.result_reason .reasonDiv {
-	display: none
-}
+.w_positive {
+  background-position: 0 0 }
+
+.w_negative {
+  background-position: -16px 0 }
+
+.w_neutral {
+  background-position: -32px 0 }
+
+.w_skip {
+  background-position: -48px  0 }

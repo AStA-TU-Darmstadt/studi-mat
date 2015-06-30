@@ -11,7 +11,7 @@ var helper = function(){
       expires = "; expires=" + date.toGMTString();
     }
     document.cookie = name + "=" + value + expires + "; path=/";
-  }
+  };
 
   /* getCookie returns the value of the cookie with the given key */
   self.getCookie = function(key) {
@@ -20,12 +20,12 @@ var helper = function(){
       while (cookies[i].charAt(0) == ' ') {
         cookies[i] = cookies[i].substring(1, cookies[i].length);
       }
-      if (cookies[i].indexOf(key + "=") == 0) {
+      if (cookies[i].indexOf(key + "=") === 0) {
         return cookies[i].substring(key.length + 1, cookies[i].length);
       }
     }
     return "";
-  }
+  };
 
 
   /* getURLparam returns the value of the URL query with the given key */
@@ -41,21 +41,7 @@ var helper = function(){
     }
 
     return "";
-  }
-
-  /* updateLanguage updates the language according to the "data-studimat-lang"
-   * tags of the HTML elements with the given language array */
-  self.updateLanguage = function(language_array) {
-    $('[data-studimat-lang]').each(function(key, val){
-      var lang_val = $(val).attr("data-studimat-lang");
-
-      if (language_array[lang_val] != undefined &&
-          $(val).attr("data-studimat-lang-lastval") != language_array[lang_val]) {
-        $(val).html(language_array[lang_val]);
-        $(val).attr("data-studimat-lang-lastval", language_array[lang_val]);
-      }
-    });
-  }
+  };
 
   return self;
 }();

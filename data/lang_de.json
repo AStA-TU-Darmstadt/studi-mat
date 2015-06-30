@@ -1,0 +1,21 @@
+{
+  "lang": "de",
+  "title": "Studi-Mat - AStA der TU Darmstadt",
+  "of": "von",
+  "yes": "Ja",
+  "no": "Nein",
+  "maybe": "Enthaltung",
+  "skip": "Überspringen",
+  "back": "Zurück",
+  "switchLangShort": "switch to english",
+  "switchLanguage": "Wenn Sie nun die Sprache wechseln verlieren Sie alle Angaben, die sie bisher gemacht haben\nChanging the language will result in loosing all answers given to this point. Proceed?",
+  "logoClick": "Wenn Sie die Seite neu laden verlieren Sie alle Angaben, die sie bisher gemacht haben\nReloading the page will cause loss of all answers given. Proceed?",
+  "header": "Hochschulwahlen 2015/2016",
+  "einleitung": "<p><strong>Deine Antworten werden nur auf deinem Gerät (Computer, Handy, etc.) ausgewertet und an keinen Server gesendet.</strong> Das heißt aber auch, dass deine Antworten verloren gehen, sobald du diese Seite neu lädst oder verlässt.</p><p>Bei den Hochschulwahlen 2015 werden nicht nur die Fachschaftsräte und der Fachbereichsrat, sondern auch die studentischen Vertreter*innen für das Studierendenparlament und die Universitätsversammlung gewählt.</p><p><strong>15. Juni - 18. Juni 2015 (jeweils von 10:30-14:30 Uhr)</strong><br />Mensa Stadtmitte oder Hörsaal-Medienzentrum Lichtwiese</p><p>Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>",
+  "losgehts": "los geht's",
+  "gewichtung": "Was ist dir besonders wichtig?",
+  "gtxt": "Hier kannst du beliebig viele Statements auswählen, die dir besonders wichtig sind. Sie werden dann doppelt gewichtet.",
+  "next": "Weiter zur Auswertung",
+  "result": "Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen mit Begründungen (klick auf die Frage) der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.",
+  "furtherinfos": "<h3>Weitere Informationen zur Wahl</h3><p>Viele weitere Infos zur diesjährigen Wahl und zur Hochschulpolitik an deiner Uni findest du in der Wahlzeitung und auf der Webseite deines AStA. <a href=\"https://www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen\">www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen</a></p>"
+}

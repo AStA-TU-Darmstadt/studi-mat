@@ -1,7 +1,6 @@
 # Studi-Mat
 
-Studi-Mat is a Javascript "Voting Orientation Application". It is based on the similar app Mat-O-Wahl (http://www.mat-o-wahl.de/) but does not share much code with it any more and is not compatible.
-
+Studi-Mat is a Javascript "Voting Orientation Application". It is based on the similar app [Mat-O-Wahl](http://www.mat-o-wahl.de/) but does not share much code with it any more and is not compatible.
 
 
 ## Features
