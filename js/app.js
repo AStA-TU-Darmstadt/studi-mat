@@ -609,4 +609,14 @@ $(document).ready(function(){
 			return true;
 		}
 	});
+
+	// social media
+	var a = document.createElement('a');
+	a.href = './';
+	var own_url = a.href;
+	var FACEBOOK_BASE_URL = 'https://www.facebook.com/sharer/sharer.php?u=';
+	var TWITTER_BASE_URL = 'https://twitter.com/intent/tweet?text=Studi-Mat%20-%20AStA%20der%20TU%20Darmstadt&url=';
+	// TODO: Tweet-Text ändern
+	document.querySelector('.social-media a.facebook').href = FACEBOOK_BASE_URL + encodeURIComponent(own_url)
+	document.querySelector('.social-media a.twitter').href = TWITTER_BASE_URL + encodeURIComponent(own_url)
 });
