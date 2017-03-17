@@ -254,6 +254,7 @@ label, checkbox {
 
 
 #questioncontainer {
+  display: none;
 	margin: 15px 0 15px 0;
 }
 
@@ -342,7 +343,10 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 	background: #f2951f;
 	padding: 10px 10px 20px 10px;
 	min-height: 130px;
+}
 
+.question .fragencounter {
+  float: right;
 }
 
 .question p.questiontext {
@@ -470,42 +474,44 @@ footer {
 	font-weight: 700;
 	text-align: center;
 }
-#result_long tr.showResult {
-	transition: background 0.1s linear;
-	font-weight: bold;
-	background-color: #f2951f !important;
-
-}
-#result_long tr.showResult td:first-of-type{
-	background: url('../img/pfeil2.png') 3px 10px no-repeat !important;
-	padding-left: 16px;
-}
-
-#result_long table tr.expandRow {
+#result_long tr.expandRow {
 	transition: background 0.08s linear;
 	cursor: pointer;
 }
-#result_long table tr.expandRow td:first-of-type{
+#result_long tr.expandRow.showResult {
+	transition: background 0.1s linear;
+	font-weight: bold;
+}
+#result_long tr.expandRow.showResult td:first-of-type{
+	background: url('../img/pfeil2.png') 3px 10px no-repeat !important;
+	padding-left: 16px;
+}
+#result_long tr.expandRow td:first-of-type{
 	background: url('../img/pfeil1.png') 3px 10px no-repeat;
 	padding-left: 16px;
 }
-#result_long table tr.expandRow.alternate-2{
+#result_long tr.expandRow.alternate-2{
 	background: #F0F0F0
 }
 
-#result_long table tr.expandRow:hover  {
+#result_long tr.expandRow:hover  {
 	background: #cecece
 }
-#result_long table tr.expandRow.double  {
+#result_long tr.expandRow.double  {
 	background: #f2951f
 }
-#result_long table tr.result_reason td {
+#result_long tr.resultReason td {
 	padding: 0 6px 0 6px;
 }
-#result_long table tr td.ownresult {
+#result_long tr.resultReason {
+  display: none;
+}
+#result_long tr.resultReason.showResult {
+  display: table-row;
+}
+#result_long tr td.ownresult {
 	border-left: 1px solid #757575;
 	border-right: 1px solid #757575;
-
 }
 
 
@@ -537,8 +543,4 @@ footer {
 }
 .w_skip {
 	background-position: -48px 0px
-}
-
-.result_reason .reasonDiv {
-	display: none
 }

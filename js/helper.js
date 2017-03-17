@@ -1,3 +1,21 @@
+function $(s) {
+  q = document.querySelector(s);
+  if (q === undefined) {
+    console.log("$('"+s+"') is undefined.");
+  }
+  return q;
+}
+
+function $$(s) {
+  var elements = document.querySelectorAll(s);
+  function each(f) {
+    for (var i = 0; i < elements.length; i++) {
+      f(i, elements[i]);
+    }
+  }
+  return { 'each': each };
+}
+
 var helper = function(){
   var self = {};
 
@@ -46,16 +64,19 @@ var helper = function(){
   /* updateLanguage updates the language according to the "data-studimat-lang"
    * tags of the HTML elements with the given language array */
   self.updateLanguage = function(language_array) {
-    $('[data-studimat-lang]').each(function(key, val){
-      var lang_val = $(val).attr("data-studimat-lang");
+    var langElements = document.querySelectorAll('[data-studimat-lang]');
+    if (langElements === null) return;
 
-      if (language_array[lang_val] != undefined &&
-          $(val).attr("data-studimat-lang-lastval") != language_array[lang_val]) {
-        $(val).html(language_array[lang_val]);
-        $(val).attr("data-studimat-lang-lastval", language_array[lang_val]);
+    for(var i = 0; i < langElements.length; i++) {
+      var element = langElements[i];
+      var lang_val = element.getAttribute('data-studimat-lang');
+      if (language_array[lang_val] !== undefined &&
+          element.getAttribute("data-studimat-lang-lastval") != language_array[lang_val]) {
+        element.innerHTML = language_array[lang_val];
+        element.setAttribute("data-studimat-lang-lastval", language_array[lang_val]);
       }
-    });
-  }
+    }
+  };
 
   return self;
 }();
