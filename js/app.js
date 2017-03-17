@@ -298,7 +298,7 @@ var studimat = function() {
             }
 
             // gewichtung abchecken , multiplicate?
-            if(daten.gewichtung.indexOf(parseInt(frage)) != -1){
+            if(daten.gewichtung.indexOf(parseInt(i)) != -1){
               mult = 2;
             }else{
               mult = 1;
