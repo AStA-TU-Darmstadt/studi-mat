@@ -271,6 +271,11 @@ label, checkbox {
 	margin: 15px 0 15px 0;
 }
 
+.voting {
+	margin-top: 1px;
+	float: right;
+}
+
 .vote, a.vote:hover, a.vote:visited {
 	width: auto;
 	float: left;
@@ -339,46 +344,25 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 	margin: 15px 0 0 0;
 	background: #f2951f;
 	padding: 10px 10px 20px 10px;
-	min-height: 130px;
+	min-height: 12em;
 }
 
 .question .fragencounter {
   float: right;
 }
 
-.question p.questiontext {
-	margin:0 0 7px 0;
-	font-size: 16pt;
-}
-/* for handlheld smaller question text*/
-@media (max-width: 600px ) {
-	.question {
-		min-height: 100px;
-
-	}
-	.question p.questiontext {
-		font-size: 13pt;
-		}
-}
-.question p a, .question p  a:hover, .question p a:visited, .question p a:active {
+.question p a,
+.question p a:hover,
+.question p a:visited,
+.question p a:active {
 	color: #ffffff /* color for links in the question box */
 }
-span.shortquestion {
-	font-size: 9pt;
-	float: right;
-}
-
-.voting {
-	margin-top: 1px;
-	float: right;
-}
-
-
 
 .containerFooter {
 	padding-top: 2em;
 	clear: both;
 }
+
 footer {
 	text-align: right;
 	clear: both;
