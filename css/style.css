@@ -169,6 +169,17 @@ body {
 	font-weight: 400;
 }
 
+
+/* hidden except for screen readers */
+.sr-hidden {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
 .voting:after, #questioncontainer:after, #jumpto:after,.result_new_partie:after {
     clear: both;
     content: " ";
@@ -178,20 +189,16 @@ body {
     visibility: hidden;
 }
 
-
-
 td {
 	padding: 4px 0  4px 0;
 }
+
 label, checkbox {
 	cursor: pointer;
 }
+
 .center {
 	text-align: center;
-}
-.clear {
-	clear: both
-
 }
 
 #middle, footer {
@@ -203,15 +210,18 @@ label, checkbox {
 	padding: 10px;
 	margin: auto auto;
 }
+
 .container {
 	display: none;
 }
+
 #logo {
 	background: url('../img/studi-mat-logo.png') center center;
 	width: 160px;
 	height: 84px;
 	display: block;
 }
+
 #language{
 	position: absolute;
 	top: 7px;
@@ -227,17 +237,20 @@ label, checkbox {
 	cursor: pointer;
 	background: #55BD00;
 	transition: background 0.05s linear;
-
 }
+
 .button {
 	float: right;
 }
+
 #startmatowahl {
 	float: left;
 }
+
 #startmatowahl:hover, .button:hover {
 	background: #50B200 ;
 }
+
 .button.back {
 	clear: both;
 	float: left;
@@ -245,6 +258,7 @@ label, checkbox {
 	color: #000;
 	transition: background 0.07s linear;
 }
+
 .button.back:hover {
 	clear: both;
 	float: left;
@@ -252,12 +266,10 @@ label, checkbox {
 }
 
 
-
 #questioncontainer {
   display: none;
 	margin: 15px 0 15px 0;
 }
-
 
 .vote, a.vote:hover, a.vote:visited {
 	width: auto;
@@ -269,33 +281,13 @@ label, checkbox {
 	color: #000;
 	text-decoration: none;
 	min-width: 50px;
-
 }
 
-.vote-ueber {
 
-}
-/* colors of vote buttons */
-/*
-a.vote-ja, .coloryes{
-	background: #55BD00;
-}
-a.vote-nein, .colorno{
-	background: #C40000;
-	color: #fff !important;
-}
-a.vote-enth, .colornone{
-	background: #FFEE00;
-
-}*/
 a.vote-ja, a.vote-nein, a.vote-enth {
 	background: #000;
 	color: #fff !important;
 }
-/*
-a.vote:active, .button:active, .button.back:active {
-	background-color: #f2951f
-}*/
 
 /* hover just for large screens, because they might have a mouse */
 @media (min-device-width: 800px) {
@@ -308,8 +300,6 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 	background-color: transparent
 }
 
-
-
 .vote-ueber, a.vote:hover.vote-ueber {
 	background: transparent;
 	margin-right: 1px;
@@ -321,20 +311,27 @@ a.vote:hover.vote-ueber:active, a.vote-ueber:active {
 	clear: left;
 	float: right;
 }
+
 #jumpto {
 	float: left;
-	margin-top: 10px;
-	display: none
 }
-.jumpto {
+
+#jumpto a {
 	cursor: pointer;
 	display: inline-block;
-	height: 5px;
-	width: 5px;
-	border-radius: 5px;
-	margin-right: 5px;
-	background: #000;
-	text-indent: -9999em;
+	height: 0.5em;
+	width: 0.5em;
+	margin-left: 0.5em;
+	background: black;
+  outline: 0;
+}
+
+#jumpto a.shown {
+  background: #f2951f;
+}
+
+#jumpto a.active {
+  height: 0.75em;
 }
 
 .question {

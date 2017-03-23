@@ -26,6 +26,16 @@ function show(e) {
   e.style.display = 'block';
 }
 
+function removeClass(e, className) {
+  re = new RegExp(className, 'g');
+  e.className = e.className.replace(re, '').replace(/ /g, '');
+}
+
+function addClass(e, className) {
+  removeClass(e, className);
+  e.className = (e.className+' '+className).trim();
+}
+
 var studimat = function() {
   var self = {};
   self.currentContainer = 0;
@@ -144,19 +154,31 @@ var studimat = function() {
    * This function takes an array of questions and prepares the DOM
   */
   function initHTML(questions) {
+    // this method will return a closure that stores i and calls showQuestion
+    // when invoked
+    function showQuestionClosure(i){
+      return function() {
+        console.log(i);
+        showQuestion(i);
+      };
+    }
+
     // create the small dots that link to the questions
     for (var i = 0; i < questions.length; i++) {
       var a = document.createElement('a');
       a.href = '#';
       a.title = 'Frage '+(parseInt(i) + 1);
-      a.innerText = parseInt(i) + 1;
-      a.addEventListener('click', showNextQuestion);
+      var span = document.createElement('span');
+      span.className = 'sr-hidden';
+      span.innerText = parseInt(i) + 1;
+      a.appendChild(span);
+      a.addEventListener('click', showQuestionClosure(i));
       $('#jumpto').appendChild(a);
     }
 
-    // js enable clicking on the voting elements
+    // add click events to the voting buttons
     $$('.voting .vote').each(function(i, elem) {
-      elem.onclick = function() {
+      elem.addEventListener('click', function() {
         voting = elem.getAttribute("data-vote");
 
         // the actual voting part, as in "save the vote"
@@ -167,7 +189,7 @@ var studimat = function() {
         showQuestion(parseInt(currentQuestion)+1);
 
         return false;
-      };
+      });
     });
 
     helper.updateLanguage(lang[self.wahlomat_language]);
@@ -181,6 +203,16 @@ var studimat = function() {
   function showQuestion(id){
     currentQuestion = id;
 
+    // update the "jumpto" dots
+    $$('#jumpto a').each(function(i, elem) {
+      if (i == id) {
+        addClass(elem, 'active');
+        addClass(elem, 'shown');
+      } else {
+        removeClass(elem, 'active');
+      }
+    });
+
     if(id < daten.frage.length){
       show($('#questioncontainer'));
 
@@ -193,7 +225,7 @@ var studimat = function() {
       // blur focus:
       $("a.vote").blur();
 
-    }else{
+    } else {
       // ask if some questions are more important
       gewichtung(); // jumps to the next container
     }
