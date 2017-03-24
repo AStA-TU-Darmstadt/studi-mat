@@ -16,6 +16,24 @@ function $$(s) {
   return { 'each': each };
 }
 
+function hide(e) {
+  e.style.display = 'none';
+}
+
+function show(e) {
+  e.style.display = 'block';
+}
+
+function removeClass(e, className) {
+  re = new RegExp(className, 'g');
+  e.className = e.className.replace(re, '').replace(/ /g, '');
+}
+
+function addClass(e, className) {
+  removeClass(e, className);
+  e.className = (e.className+' '+className).trim();
+}
+
 var helper = function(){
   var self = {};
 

@@ -17,25 +17,6 @@ along with this program; if not, write to the Free Software Foundation,
 Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 */
-
-function hide(e) {
-  e.style.display = 'none';
-}
-
-function show(e) {
-  e.style.display = 'block';
-}
-
-function removeClass(e, className) {
-  re = new RegExp(className, 'g');
-  e.className = e.className.replace(re, '').replace(/ /g, '');
-}
-
-function addClass(e, className) {
-  removeClass(e, className);
-  e.className = (e.className+' '+className).trim();
-}
-
 var studimat = function() {
   var self = {};
   self.currentContainer = 0;
@@ -151,53 +132,6 @@ var studimat = function() {
 
 
   /*
-   * This function takes an array of questions and prepares the DOM
-  */
-  function initHTML(questions) {
-    // this method will return a closure that stores i and calls showQuestion
-    // when invoked
-    function showQuestionClosure(i){
-      return function() {
-        console.log(i);
-        showQuestion(i);
-      };
-    }
-
-    // create the small dots that link to the questions
-    for (var i = 0; i < questions.length; i++) {
-      var a = document.createElement('a');
-      a.href = '#';
-      a.title = 'Frage '+(parseInt(i) + 1);
-      var span = document.createElement('span');
-      span.className = 'sr-hidden';
-      span.innerText = parseInt(i) + 1;
-      a.appendChild(span);
-      a.addEventListener('click', showQuestionClosure(i));
-      $('#jumpto').appendChild(a);
-    }
-
-    // add click events to the voting buttons
-    $$('.voting .vote').each(function(i, elem) {
-      elem.addEventListener('click', function() {
-        voting = elem.getAttribute("data-vote");
-
-        // the actual voting part, as in "save the vote"
-        numberOfParties = daten.partei.length;
-        daten.wertung[self.currentQuestion][numberOfParties] = voting;
-
-        // also show the next question or whatever
-        showQuestion(parseInt(self.currentQuestion)+1);
-
-        return false;
-      });
-    });
-
-    helper.updateLanguage(lang[self.wahlomat_language]);
-  }
-
-
-
-  /*
    * This function can show you a question if called
   */
   function showQuestion(id){
@@ -267,8 +201,6 @@ var studimat = function() {
     showContainer(3);
     // always go to the top:
     window.scrollTo(0, 0);
-
-    helper.updateLanguage(lang[self.wahlomat_language]);
   }
 
   // function that trims the question if there are breaks or </p> etc
@@ -548,8 +480,6 @@ var studimat = function() {
         });
       });
     });
-
-    helper.updateLanguage(lang[self.wahlomat_language]);
   }
 
 
@@ -572,7 +502,47 @@ var studimat = function() {
   }
 
 
-  function wahlomat(){
+  function toggleLanguage(){
+    if (!self.wahlomat_started || confirm(lang[self.wahlomat_language]['switchLanguage'])) {
+      // change the language
+      self.wahlomat_language = wahlomat_accepted_languages[1 - wahlomat_accepted_languages.indexOf(self.wahlomat_language)];
+      location.href = "?lang="+self.wahlomat_language;
+    }
+  }
+
+
+  window.onload = function() {
+    // Determine the current language
+    var lang_url = helper.getURLparam("lang");
+    var lang_cookie = helper.getCookie("lang");
+
+    if (lang_url !== "" && wahlomat_accepted_languages.indexOf(lang_url) != -1) {
+      console.log("setting language (URL) to", lang_url);
+      self.wahlomat_language = lang_url;
+      helper.setCookie("lang", lang_url);
+    } else if (lang_cookie !== "" && wahlomat_accepted_languages.indexOf(lang_cookie) != -1) {
+      console.log("setting language (cookie) to", lang_cookie);
+      self.wahlomat_language = lang_cookie;
+    } else {
+      self.wahlomat_language = wahlomat_accepted_languages[0];
+    }
+
+    // update all elements which have a data-studimat-lang attribute
+    helper.updateLanguage(lang[self.wahlomat_language]);
+
+    $$('.container .containerFooter').each(function(i, elem){
+      if(i !== 0){
+        var btn = document.createElement('div');
+        btn.className = "back button";
+        btn.id = "showContainer"+i;
+        btn.setAttribute('data-studimat-lang', 'back');
+        elem.parentNode.insertBefore(btn, elem);
+        $('#showContainer' + i).onclick = function(){
+          showContainer(i);
+        };
+      }
+    });
+
     // load the data
     var httpRequest = new XMLHttpRequest();
 
@@ -589,63 +559,51 @@ var studimat = function() {
           // move json data to global variable "daten"
           readData(parse_result.data);
 
-          // data is prepared, show it
-          initHTML(daten.frage); // TODO: rename daten.frage to data.questions
+          // this method will return a closure that stores i and calls showQuestion
+          // when invoked
+          var showQuestionClosure = function(i){
+            return function() {
+              showQuestion(i);
+            };
+          };
+
+          // create the small dots that link to the questions
+          for (var i = 0; i < daten.frage.length; i++) { // TODO: rename daten.frage to data.questions
+            var a = document.createElement('a');
+            a.href = '#';
+            a.title = 'Frage ' + (parseInt(i) + 1);
+            var span = document.createElement('span');
+            span.className = 'sr-hidden';
+            span.innerText = parseInt(i) + 1;
+            a.appendChild(span);
+            a.addEventListener('click', showQuestionClosure(i));
+            $('#jumpto').appendChild(a);
+          }
+
+          // add click events to the voting buttons
+          $$('.voting .vote').each(function(i, elem) {
+            elem.addEventListener('click', function() {
+              voting = elem.getAttribute("data-vote");
+
+              // the actual voting part, as in "save the vote"
+              numberOfParties = daten.partei.length;
+              daten.wertung[self.currentQuestion][numberOfParties] = voting;
+
+              // also show the next question or whatever
+              showQuestion(parseInt(self.currentQuestion)+1);
+
+              return false;
+            });
+          });
 
           showContainer(1);
-          $$('.container .containerFooter').each(function(i, elem){
-            if(i !== 0){
-              var btn = document.createElement('div');
-              btn.className = "back button";
-              btn.id = "showContainer"+i;
-              btn.setAttribute('data-studimat-lang', 'back');
-              elem.parentNode.insertBefore(btn, elem);
-              $('#showContainer' + i).onclick = function(){
-                showContainer(i);
-              };
-              helper.updateLanguage(lang[self.wahlomat_language]);
-            }
-          });
         } else {
           alert("Could not fetch questions from the server. Sorry. :(");
         }
       }
-    }
+    };
     httpRequest.open('GET', "data/daten_"+self.wahlomat_language+".csv");
     httpRequest.send();
-  }
-
-
-  function toggleLanguage(){
-    if (!self.wahlomat_started || confirm(lang[self.wahlomat_language]['switchLanguage'])) {
-      // change the language
-      self.wahlomat_language = wahlomat_accepted_languages[1 - wahlomat_accepted_languages.indexOf(self.wahlomat_language)];
-      location.href = "?lang="+self.wahlomat_language;
-    }
-  }
-
-
-  window.onload = function() {
-    // Determine the current language
-    var lang_url = helper.getURLparam("lang");
-    var lang_cookie = helper.getCookie("lang");
-
-    if (lang_url != "" && wahlomat_accepted_languages.indexOf(lang_url) != -1) {
-      console.log("setting language (URL) to", lang_url);
-      self.wahlomat_language = lang_url;
-      helper.setCookie("lang", lang_url);
-    } else if (lang_cookie != "" && wahlomat_accepted_languages.indexOf(lang_cookie) != -1) {
-      console.log("setting language (cookie) to", lang_cookie);
-      self.wahlomat_language = lang_cookie;
-    } else {
-      self.wahlomat_language = wahlomat_accepted_languages[0];
-    }
-
-    // update all elements which have a data-studimat-lang attribute
-    helper.updateLanguage(lang[self.wahlomat_language]);
-
-    // start the "wahlomat"
-    wahlomat();
 
     $('#startmatowahl').onclick = function() {
       wahlomat_started = true;
@@ -668,8 +626,8 @@ var studimat = function() {
     // start
     $('#logo').onclick = function() {
       if(wahlomat_started){
-        return (confirm(lang[self.wahlomat_language]['logoClick']));
-      }else{
+        return (confirm(lang[self.wahlomat_language].logoClick));
+      } else {
         return true;
       }
     };
