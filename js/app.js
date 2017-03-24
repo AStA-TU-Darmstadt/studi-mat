@@ -183,10 +183,10 @@ var studimat = function() {
 
         // the actual voting part, as in "save the vote"
         numberOfParties = daten.partei.length;
-        daten.wertung[currentQuestion][numberOfParties] = voting;
+        daten.wertung[self.currentQuestion][numberOfParties] = voting;
 
         // also show the next question or whatever
-        showQuestion(parseInt(currentQuestion)+1);
+        showQuestion(parseInt(self.currentQuestion)+1);
 
         return false;
       });
@@ -201,7 +201,7 @@ var studimat = function() {
    * This function can show you a question if called
   */
   function showQuestion(id){
-    currentQuestion = id;
+    self.currentQuestion = id;
 
     // update the "jumpto" dots
     $$('#jumpto a').each(function(i, elem) {
@@ -214,13 +214,10 @@ var studimat = function() {
     });
 
     if(id < daten.frage.length){
-      show($('#questioncontainer'));
-
       $('.question .title').innerHTML = daten.kurzfragen[id];
       $('.question .question-number').innerHTML = id+1;
       $('.question .question-count').innerHTML = daten.kurzfragen.length;
       $('.question .description').innerHTML = daten.frage[id];
-
 
       // blur focus:
       $("a.vote").blur();
@@ -267,8 +264,7 @@ var studimat = function() {
       $('#gewichtung table').appendChild(tr);
     }
     // show this container
-    hide($('.container_2'));
-    show($('.container_3'));
+    showContainer(3);
     // always go to the top:
     window.scrollTo(0, 0);
 
@@ -524,8 +520,7 @@ var studimat = function() {
     }
 
 
-    hide($('.container_3'));
-    show($('.container_4'));
+    showContainer(4);
     // always go to the top:
     window.scrollTo(0, 0);
 
@@ -560,15 +555,14 @@ var studimat = function() {
 
   function showContainer(num){
     if(num != 1) {
-      //console.log("Zeige Container", num);
-      hide($('.container'));
+      $$('.container').each(function(i, elem) { hide(elem); });
       show($('.container_'+num));
     } else {
       // enable back for each question
       if(self.currentQuestion > 0) {
         showQuestion(self.currentQuestion - 1);
       } else {
-        hide($('.container'));
+        $$('.container').each(function(i, elem) { hide(elem); });
         show($('.container_'+num));
       }
     }
@@ -598,8 +592,7 @@ var studimat = function() {
           // data is prepared, show it
           initHTML(daten.frage); // TODO: rename daten.frage to data.questions
 
-          hide($('.container'));
-          show($('.container_1'));
+          showContainer(1);
           $$('.container .containerFooter').each(function(i, elem){
             if(i !== 0){
               var btn = document.createElement('div');
@@ -607,7 +600,9 @@ var studimat = function() {
               btn.id = "showContainer"+i;
               btn.setAttribute('data-studimat-lang', 'back');
               elem.parentNode.insertBefore(btn, elem);
-              $('#showContainer' + i).onclick = function(){ showContainer(i); };
+              $('#showContainer' + i).onclick = function(){
+                showContainer(i);
+              };
               helper.updateLanguage(lang[self.wahlomat_language]);
             }
           });
@@ -622,7 +617,6 @@ var studimat = function() {
 
 
   function toggleLanguage(){
-    console.log('hi');
     if (!self.wahlomat_started || confirm(lang[self.wahlomat_language]['switchLanguage'])) {
       // change the language
       self.wahlomat_language = wahlomat_accepted_languages[1 - wahlomat_accepted_languages.indexOf(self.wahlomat_language)];
@@ -654,8 +648,8 @@ var studimat = function() {
     wahlomat();
 
     $('#startmatowahl').onclick = function() {
-      hide($('.container_1'));
       wahlomat_started = true;
+      showContainer(2);
       showQuestion(0);
     };
 
