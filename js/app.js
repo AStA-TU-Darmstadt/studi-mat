@@ -209,7 +209,6 @@ var studimat = function() {
     // add two rows for each question
     for(i = 0; i < self.data.questions.length; i++) {
       var question = self.data.questions[i];
-      console.log(question);
 
       var expandRow = document.createElement('tr');
       expandRow.className = 'expandRow' + (self.weights[i] > 1 ? ' double':'');
