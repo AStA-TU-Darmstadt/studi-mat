@@ -1,0 +1,75 @@
+{
+  "parties": [
+    {
+      "shortName": "FW",
+      "longName": "FACHWERK",
+      "description": ""
+    },
+    {
+      "shortName": "CG",
+      "longName": "Campusgrüne",
+      "description": ""
+    },
+    {
+      "shortName": "Jusos",
+      "longName": "Jusos und Unabhängige",
+      "description": ""
+    },
+    {
+      "shortName": "Ing+",
+      "longName": "Ing+",
+      "description": ""
+    },
+    {
+      "shortName": "SDS",
+      "longName": "Linke Liste – SDS",
+      "description": ""
+    }
+  ],
+  "questions": [
+    {
+      "title": "Anwesenheitspflichten",
+      "description": "Anwesenheitspflichten in Vorlesungen und Seminaren sollen ausgeweitet werden.",
+      "statements": {
+        "FW": ["-", "Wir lehnen Anwesenheitspflichten und Pflichtübungsabgaben grundsätzlich ab, da diese im Widerspruch zum selbstbestimmten Lernen und Arbeiten stehen. Eine zwangsweise körperliche Anwesenheit ist kein Ersatz für die freiwillige geistige Beschäftigung mit Inhalten/Themen. Zudem erschweren Anwesenheitspflichten das Studium mit Kind oder Nebenjob."],
+        "CG": ["-", "Anwesenheitspflichten sollen universitätsweit abgeschafft werden. Studierende sind in der Lage selbstbestimmt zu lernen. Dabei muss individuellen Bedürfnissen bei der Art des Wissenserwerbs nicht mit Zwang begegnet werden."],
+        "Jusos": ["-", "Anwesendheitspflichten schränken das freie Studium ein und sollten deswegen abgeschafft werden. Weiterhin führen Anwesenheitspflichten zur Benachteiligung von Studierenden, die auf Grund eines Nebenjobs oder Familie nicht ihren gesamten Alltag auf die Universität abstimmen können."],
+        "Ing+": ["-", "Anwesenheitspflichten sollen nicht ausgeweitet werden. Der eigenverantwortliche Charakter des universitären Studiums soll erhalten bleiben."],
+        "SDS": ["-", "Dozierende sollten ihre Lehrveranstaltung spannend gestalten und wichtige Inhalte vermitteln. Wenn dann trotzdem viele Studierende wegbleiben, ist dies auch ihr gutes Recht. Es gibt sehr viele, auch gute, Gründe einer Lehrveranstaltung fernzubleiben. Wer sich den Stoff trotzdem erschließt, sollte dafür nicht bestraft werden. Wer sich den Stoff nicht erschließt wird ohnehin bestraft, da er wohl durch die Prüfung fallen wird. Die wenigen Ausnahmen, die gänzlich ohne Aufwand durch die Prüfungen kommen, sollten für ihre Cleverness auch nicht bestraft werden. :)"]
+      }
+    },
+    {
+      "title": "vegane und vegetarische Mensaangebote",
+      "description": "In der Mensa sollen mehr vegane und vegetarische Gerichte angeboten werden, selbst wenn dafür das Angebot an Fleischgerichten reduziert wird.",
+      "statements": {
+        "FW": ["+", "Wir wollen, dass immer sowohl vegane als auch vegetarische Gerichte angeboten werden. Allen sollte es möglich sein, sich abwechslungsreich in der Mensa zu ernähren. Dafür sollte das Angebot an vegetarischen und veganen Gerichten erhöht werden. Da wir die derzeitige Massentierhaltung und Überzüchtung kritisch sehen, kann hierfür auch die Anzahl von Fleischgerichten vermindert werden. Eine komplette Abschaffung des Angebots von Fleischgerichten lehnen wir jedoch ab. Darüber hinaus fordern wir auch allgemein eine Verbesserung der Qualität des Mensaessens."],
+        "CG": ["+", "In der Mensa sollen Studierende möglichst leckeres, gesundes und preiswertes Essen erhalten. Fleisch ist eine kostenspielige Ressource, belastet die Umwelt und sollte daher auf dem Teller die Nebenrolle spielen. Das angebotene Fleisch sollte hingegen eine hohe Qualität haben - lieber weniger Fleisch, dafür bio. <br><br>Vegetarische und vegane Gerichte sollen in der Qualität, dem Geschmack und der Quantität den fleischhaltigen Gerichten in keiner Weise nachstehen."],
+        "Jusos": ["+", "Vegetarisch/vegane Gerichte sollten den gleichen Stellenwert wie Fleischgerichte haben. Aktuell kann davon noch keine Rede sein."],
+        "Ing+": ["-", "Das Angebot der Mensa soll zuerst eine ausgewogene, frische Ernährung ermöglichen. Ist dies gegeben, können natürlich auch zusätzliche Gerichte angeboten werden. Die Qualität des Essens ist uns hierbei wichtiger als eine ideologische Ausrichtung."],
+        "SDS": ["+", "Die Mensa sollte möglichst vielen Studierenden ein gutes und günstiges Essen ermöglichen. Vegetarische und vegane Alternativen sorgen dabei für ein ausgewogenes und gesundes Angebot. Über die Qualität der Mensa im Allgemeinen muss allerdings diskutiert werden."]
+      }
+    },
+    {
+      "title": "Die Begrenzung der Prüfungsversuche soll abgeschafft werden.",
+      "description": "Derzeit sind an der TU Darmstadt maximal 3 Prüfungsversuche pro Fachprüfung  und eine mündliche Ergänzungsprüfung pro Studium möglich.",
+      "statements": {
+        "FW": ["+", "Zu einem selbstbestimmten Studium zählt für uns auch die Möglichkeit, eine Prüfung beliebig oft zu wiederholen. Dies erleichtert nicht das Bestehen. Daher sind wir für die Abschaffung der bestehenden Regelung.  Zudem wird durch die Begrenzung der Prüfungsversuche den Studierenden vorgeschrieben, ab wann ein Studium für sie nicht mehr erfolgversprechend ist. Diese Entscheidung sollte jedoch bei den Studierenden selbst liegen."],
+        "CG": ["+", "Die Universität soll selbstbestimtmes Lernen ermöglichen. Selbstbestimmt bedeutet unter anderem, dass es jedem frei stehen soll sein Erlerntes beliebig oft in Prüfungen unter Beweis zu stellen. Eine Einschränkung der Prüfungsversuche ist eine unnötige und ungerechtfertigte Einschränkung der Lernenden, da viele Faktoren die Prüfungsvorbereitung beinflussen können, auf die wir als Studierende häufig keinen Einfluss haben - da darf es auch mal nicht so gut laufen.",1,"Die Begrenzung sollte, wie es in Diplomstudiengängen üblich war, aufgehoben werden. Jede/r Studierende hat das Ziel eine Prüfung auch zu bestehen, deshalb muss die Universität an dieser Stelle keine maximale Prüfungsanzahl vorgeben."],
+        "Jusos": ["+", "Die Begrenzung sollte, wie es in Diplomstudiengängen üblich war, aufgehoben werden. Jede/r Studierende hat das Ziel eine Prüfung auch zu bestehen, deshalb muss die Universität an dieser Stelle keine maximale Prüfungsanzahl vorgeben."],
+        "Ing+": ["-", "Eine Abschaffung jeglicher Begrenzung der Prüfungsversuche ist nicht sinnvoll. Die Erweiterung der mündlichen Ergänzungsprüfung auf JEDEN Drittversuch sehen wir jedoch als sehr sinnvoll an."],
+        "SDS": ["+", "Die Begrenzung der Prüfungsversuche dient lediglich dem Aufbau von Leistungsdruck und dem so genannten 'Rausprüfen von Leistungsschwachen Studierenden'. Hier geht es erkennbar nicht um die Qualität von Lehre und Studium, sondern lediglich um die Vorsortierung der Studierenden für den Arbeitsmarkt."]
+      }
+    },
+    {
+      "title": "Wiederholen bestandener Prüfungsleistungen",
+      "description": "Auch nach Bestehen einer Prüfungsleistung soll es möglich sein, das Ergebnis zu verbessern, indem die Prüfung erneut absolviert wird.",
+      "statements": {
+        "FW": ["0", "Diese Frage lässt sich für uns nicht eindeutig beantworten, da wir generell gegen ein benotetes System sind. Wir fordern, dass lediglich ein Bestehen und Nicht-Bestehen der Prüfung möglich ist.<br>Dem Verbessern der Note durch nochmaliges absolvieren einer Prüfung stehen wir grundsätzlich offen gegenüber, da dieses die Entscheidung jeder*s Einzelnen sein sollte. Jedoch kann hierdurch eine Benachteiligung von Studierenden erfolgen, die auf Grund äußerer Umstände nicht die Möglichkeit haben, beliebig lange zu studieren und Prüfungen zu wiederholen."],
+        "CG": ["0", "Noten sollten an der Universität keine so große Wichtigkeit besitzen und viel mehr den Wissenstand der Lernenden widerspiegeln. Dies ist dann gegeben, wenn auch nach Klausuren Erlerntes zu einer Verbesserung der Note führen kann. Wer mehr bzw. nochmal besser lernen möchte, sollte nicht daran gehindert werdern. An Universitäten, die dies bereits ermöglichen hat sich gezeigt, dass dies nicht zu einer übermäßigen Belastung der Fachbereiche führt.<br><br>Es ist jedoch darauf zu  achten, dass dies nur dann wünschenswert ist, wenn in der Universität  der Druck gute Noten zu haben, allgemein sinkt, da sonst nur weiterer  unnötiger und ungewollter Leistungsdruck entsteht."],
+        "Jusos": ["+", "Für uns gehört es zur Freiheit der Studierenden, dass sie - wenn sie möchten - eine bestanden Prüfung wiederholen können."],
+        "Ing+": ["+", "Ausrutscher passieren und es soll möglich sein, diese in Einzelfällen auszugleichen. Eine erstrebenswerte Lösung wäre die Einführung einer Regelung, welche es Studierenden erlaubt, während ihres Studiums z.B. drei bestandene Prüfungen zu wiederholen."],
+        "SDS": ["+", "Dies sollte eine Selbstverständlichkeit sein. Es gibt keinen Grund dafür, warum eine schlechte Note aus dem ersten Semester zählen sollte, obwohl diese zum Ende meines Studiums überhaupt nicht mehr dem aktuellen Kenntnis- und Leistungsstand repräsentiert. Lediglich bei vollständig standardisierten Klausuren, bei denen so die Möglichkeit der Wiederholung der identischen Prüfung gegeben wäre, sollte über Sonderregelungen nachgedacht werden."]
+      }
+    }
+  ]
+}

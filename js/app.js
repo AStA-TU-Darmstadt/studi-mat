@@ -23,116 +23,40 @@ var studimat = function() {
   self.currentQuestion = 0;
   self.wahlomat_started = false;
   self.wahlomat_language = "";
+  self.data = null; // content of data/*.json
+  self.votes = []; // e.g. ["+", "-", "0", "skip", ...]
+  self.weights = []; // e.g. [1, 1, 2, 1, ...]
+  self.scores = {}; // e.g. {party1: 13, party2: 11}
+  self.maxScore = 0; // used to calculate percentual values; increased by 2 for
+                     // each question, increased by 4 for each weighted question
+
   var wahlomat_accepted_languages = ["de", "en"];
-
-  // global variables to be accessed everywhere
-  // some variables are in german, comments should be in english
-  var daten        = new Object();
-  daten.partei     = new Array();
-  daten.parteiKurz = new Array();
-  daten.kurzfragen = new Array();
-  daten.frage      = new Array();
-  daten.wertung    = new Object();
-  daten.gruende    = new Object();
-  daten.gewichtung = new Array();
-  daten.result     = new Array();
-
-  // the object "daten" has the following structure
-  // can be seen in the console of any browser (F12)
-  /*
-  var daten = {
-    parteien     = ["bla bla", "andere partei", ...],
-    parteienkurz = [abc, dcf, ...]
-    fragen       = ["erste Frage", "zweite Frage", ...],
-    kurzfragen   = [kurzfrage1, kurzfrage2, ...],
-    kurzfrage1   = [Meinungabc, Meinungdcf, ... ... ... , meinungclient],
-    kurzfrage2   = ...
-    kurzfrage3   = ...
-    ...
-    kurzfrageN   = ...
-    fargenlang   = [...,...,...]
-    gewichtung   = [gewichtung1, gewichtung2,...]
-
-  }
-  */
+  var OPINION_MAP = {
+    "-": -1,
+    "0": 0,
+    "+": 1
+  };
+  var OPINION_CLASS_MAP = {
+    '-': 'w_against',
+    '0': 'w_neutral',
+    '+': 'w_pro',
+    'skip': 'w_skip'
+  };
 
   /*
-   * This function turns the data from the json
-   * into our data-structure "daten"
+    get the party with the given short name `shortName
   */
-  function readData(jsondata) {
-    numberofquestion = -1; // at wich question are we looking
-    numberofreason   = -1; // helper to count the reasons of the partys
-
-    // loop trough data (supplied as json "jsondata")
-    for(var a = 0; a < jsondata.length; a++) {
-      var b = jsondata[a];
-
-      if(b != 0){ // fehler im json converter erzeugt eine nullzeile, die soll ignoriert werden
-      // second level loop
-      for(var c = 0; c < b.length; c++) {
-        var d = b[c];
-        // a = line of the table
-        // b = content of the line (array)
-        // c = column of the table
-        // d = content of the table cell defined by a and c
-
-        // if first line, then we save the parties
-        if(a == 0){
-
-          // if its an even number greater then 1 it is a short version of the partys name (eg. SPD etc.)
-          if (c % 2 != 0 && c > 1) {
-            daten.parteiKurz.push(d);
-          }else if(c > 1){
-          // otherwise it is the long description of the party (eg. Sozialdemokratische Partei ...)
-            daten.partei.push(d);
-          }
-        }
-        // lines > 0 --> data
-        if(a > 0){
-          // first column is the question in short as a descriptor
-          if(c == 0){
-            daten.kurzfragen.push(d);
-            // make an own array for each question to save value (wertung) and the reasons (gruende):
-            daten.wertung[(parseInt(a)-1)] = new Array();
-            daten.gruende[(parseInt(a)-1)] = new Array();
-          }else if(c == 1){
-            // it is a long question
-            daten.frage.push(d.replace(/\n/, '</p><p>'));
-          }else if(c > 1 && c % 2 != 0){
-            // second column or bigger and no reason but a number
-            // but for which partie?
-            // the partienumber is (n-first 2 columns)/2 -1
-            partienumber = (c-1)/2 -1;
-
-            // the questionnumber is up and rising:
-            if(partienumber == 0){
-              numberofquestion++;
-            }
-
-            fragenname = daten.kurzfragen[numberofquestion];
-            // save the value of this question/party
-            daten.wertung[numberofquestion].push(d);
-
-
-          }else if(c > 1 && c % 2 == 0){
-            partienumber = (c-1)/2 - 0.5;
-            // the reason is up and rising:
-            if(partienumber == 0){
-              numberofreason++;
-            }
-            // save the reason
-            daten.gruende[numberofreason].push(d)
-          }
-        }
-      }
+  function getPartyByShortname(shortName) {
+    for (var i = 0; i < self.data.parties.length; i++) {
+      if(self.data.parties[i].shortName == shortName) {
+        return self.data.parties[i];
       }
     }
   }
 
 
   /*
-   * This function can show you a question if called
+   * show the question with id `id`
   */
   function showQuestion(id){
     self.currentQuestion = id;
@@ -147,18 +71,18 @@ var studimat = function() {
       }
     });
 
-    if(id < daten.frage.length){
-      $('.question .title').innerHTML = daten.kurzfragen[id];
+    // update question box
+    if(id < self.data.questions.length){
+      $('.question .title').innerHTML = self.data.questions[id].title;
+      $('.question .description').innerHTML = self.data.questions[id].description;
       $('.question .question-number').innerHTML = id+1;
-      $('.question .question-count').innerHTML = daten.kurzfragen.length;
-      $('.question .description').innerHTML = daten.frage[id];
+      $('.question .question-count').innerHTML = self.data.questions.length;
 
       // blur focus:
       $("a.vote").blur();
 
     } else {
-      // ask if some questions are more important
-      gewichtung(); // jumps to the next container
+      showWeightingTable(); // jumps to the next container
     }
     // always go to the top:
     window.scrollTo(0, 0);
@@ -170,293 +94,180 @@ var studimat = function() {
 
 
   /*
-   * creates an container which allows selecting questions
-   * that are more important to the user
+   * shows a dialog which allows selecting questions that are especially
+   * important to the user
   */
-  function gewichtung() {
-    $('#gewichtung table').innerHTML = "";
-    for(var i = 0; i < daten.frage.length; i++) {
-      question = trimQuestion(daten.frage[i]);
-
+  function showWeightingTable() {
+    $('#weighting table').innerHTML = "";
+    for(var i = 0; i < self.data.questions.length; i++) {
       var tr = document.createElement('tr');
       var td1 = document.createElement('td');
       var input = document.createElement('input');
-      input.id = 'checkbox_gewichtung' + i;
-      input.className = 'checkbox_gewichtung';
+      input.id = 'checkbox_weighting' + i;
+      input.className = 'checkbox_weighting';
       input.type = 'checkbox';
-      input.setAttribute('data-gewichtung', i);
+      input.setAttribute('data-weighting', i);
       td1.appendChild(input);
 
       var td2 = document.createElement('td');
       var label = document.createElement('label');
       label.setAttribute('for', input.id);
-      label.innerText = question;
+
+      // TODO: improve visual representation
+      label.innerText = self.data.questions[i].title + ' - ' + self.data.questions[i].description;
       td2.appendChild(label);
 
       tr.appendChild(td1);
       tr.appendChild(td2);
-      $('#gewichtung table').appendChild(tr);
+      $('#weighting table').appendChild(tr);
     }
-    // show this container
+
     showContainer(3);
-    // always go to the top:
+    // always scroll to the top:
     window.scrollTo(0, 0);
   }
 
-  // function that trims the question if there are breaks or </p> etc
-  function trimQuestion(q){
-    // trim question to its first sentence:
-    pIndex = q.indexOf("</p");
-    if(pIndex !== -1){
-      q = q.substr(0,  pIndex);
-    }
-    brIndex = q.indexOf("<br");
-    if(brIndex !== -1){
-      q = q.substr(0,  brIndex);
-    }
-    return q
-  }
 
+  /*
+   * calculate the score for each party
+  */
+  function calculateScores(){
+    // we use the same model as the Wahl-O-Mat by the German 'Bundeszentrale für
+    // politische Bildung (bpb)' to calculate the conformity of the user to the
+    // different parties:
+    // http://www.bpb.de/system/files/dokument_pdf/Rechenmodell%20des%20Wahl-O-Mat.pdf
 
-  function calculateResult(){
-    // here we calculate the result
-    // for each party we calculate a score based on the following rules
-    //
-    // Party    |   students  |  score
-    //   1              1          +1
-    //  -1             -1          +1
-    //   0              0          +1
-    //   1             -1          -1
-    //  -1              1          -1
-    //   0             1/-1        -0.5
-    //  1/-1            0          -0.5
-    //
-    // a question which was checked in the "gewichtung" we count twice as much
-
-    daten.gewichtung = [];
-    $$('.checkbox_gewichtung').each(function(i, elem){
-      if(elem.checked){
-        frage = parseInt(elem.getAttribute('data-gewichtung'));
-        daten.gewichtung.push(frage);
-      }
+    self.weights = [];
+    $$('.checkbox_weighting').each(function(i, elem){
+      self.weights.push(1 + elem.checked);
     });
 
-    numberOfQuestion = 0;
-    for (var i in daten.wertung) {
-      if (daten.wertung.hasOwnProperty(i)) {
-        var array = daten.wertung[i];
-        if(array.length > daten.partei.length){
-          // get own opinion
-          ownscore = array[array.length-1];
-          for(var a = 0; a < array.length; a++) {
-            var b = array[a];
-            currentValue = daten.result[a];
-
-            if(currentValue === undefined || i === 0){
-              daten.result[a] = 0;
-              currentValue    = 0;
-            }
-
-            // gewichtung abchecken , multiplicate?
-            if(daten.gewichtung.indexOf(parseInt(i)) != -1){
-              mult = 2;
-            }else{
-              mult = 1;
-            }
-
-            // only important if he or she did not skip ownscore == 99
-            if(ownscore < 5 ){
-              // the score is according to the rules above
-              if((ownscore == 1 || ownscore == -1) && ownscore == b){
-                currentValue = currentValue + 1 * mult;
-              }else if(ownscore == 0 && b == 0){
-                currentValue = currentValue + 1 * mult;
-              }else if((ownscore == 1 || ownscore == -1) && (b == 1 || b == -1)){
-                currentValue = currentValue - 1 * mult;
-              }else if ((ownscore == 1 || ownscore == -1) && b == 0){
-                currentValue = currentValue - 0.5 * mult;
-              }else if(ownscore == 0 && b != 0){
-                currentValue = currentValue - 0.5 * mult;
-              }else {
-                //console.log("Scheinbar sind nicht alle Regeln integriert", b,ownscore);
-              }
-            }
-
-            // save result
-            daten.result[a] = currentValue;
-          }
-        } else {
-          console.log("Frage nicht beantwortet", array);
-        }
-        numberOfQuestion++;
-      }
+    // initialize scores for all parties
+    self.scores = {};
+    for(var i = 0; i < self.data.parties.length; i++) {
+      self.scores[self.data.parties[i].shortName] = 0;
     }
 
-    console.log("Result: ", daten.result);
-    createResult();
+    // loop through questions and add scores for each party
+    self.maxScore = 0;
+    for(i = 0; i < self.data.questions.length; i++) {
+      if (self.votes[i] != 'skip') {
+        self.maxScore += 2 * self.weights[i];
+        for(var party in self.data.questions[i].statements) {
+          var party_opinion = self.data.questions[i].statements[party][0];
+          var score = 2 - Math.abs(OPINION_MAP[self.votes[i]] - OPINION_MAP[party_opinion]);
+          self.scores[party] += score * self.weights[i];
+        }
+      }
+    }
   }
 
-
-  function createResult() {
-    // create associative array we can sort:
-    sortable = new Array();
-    resorted = new Object();
-    for(var i = 0; i < daten.parteiKurz.length; i++) {
-      sortable[daten.parteiKurz[i]] = daten.result[i];
-    }
-
-    // we need an array orderd from high to low...
-    // thats what this code does...
-    var tuples = [];
-    for (var key in sortable) tuples.push([key, sortable[key]]);
-
-    tuples.sort(function(a, b) { return a[1] > b[1] ? 1 : a[1] < b[1] ? -1 : 0 });
-
-    var length = tuples.length;
-
-    while (length--) {
-      resorted[tuples[length][0]] = tuples[length][1];
-    }
-
-
-    // now we should have an ordered result:
+  function showResult(){
     $('#result_short').innerHTML = '';
 
-    for (var party in resorted) {
-      if (resorted.hasOwnProperty(party)) {
-        b = resorted[party];
-        // prozentual value:
-        doubles = daten.gewichtung.length
-        possiblePoint = 2*daten.frage.length + 2*doubles // daten.frage.length ist quasi die mitte, also 0 punkte
-        reachedPoints = daten.frage.length+doubles + b;
-        prozentual = Math.round(parseFloat(reachedPoints)/parseFloat(possiblePoint) * 10000)/100
+    var sortedShortNames = [];
+    for (var p in self.scores) {
+      sortedShortNames.push(p);
+    }
+    sortedShortNames.sort(function(a, b) {
+      return self.scores[b] - self.scores[a];
+    });
 
-        langerParteiname = daten.partei[daten.parteiKurz.indexOf(party)];
+    for(i = 0; i < self.data.parties.length; i++) { // TODO: sort by score
+      var score = self.scores[self.data.parties[i].shortName] / self.maxScore;
+      var percentage = Math.round(score * 100 * 100) / 100;
 
-        nameForBarChart  = langerParteiname
-        /* // if you want to restrict the name length, I dont
-        if (langerParteiname.length < 20){
-          nameForBarChart  = i
-        }*/
-
-        var result = document.createElement('div');
-        result.className = 'result_new_partie';
-        var bar_chart_name = document.createElement('div');
-        bar_chart_name.className = 'barchart_name';
-        bar_chart_name.innerText = nameForBarChart;
-        var bar_chart = document.createElement('div');
-        bar_chart.className = 'barchart';
-        bar_chart.style.width = prozentual+'%';
-        bar_chart.innerText = prozentual+'%';
-        result.appendChild(bar_chart_name);
-        result.appendChild(bar_chart);
-        $('#result_short').append(result);
-      }
+      // create bars for the bar chart
+      var result = document.createElement('div');
+      result.className = 'result_new_partie';
+      var bar_chart_name = document.createElement('div');
+      bar_chart_name.className = 'barchart_name';
+      bar_chart_name.innerText = self.data.parties[i].longName;
+      var bar_chart = document.createElement('div');
+      bar_chart.className = 'barchart';
+      bar_chart.style.width = percentage+'%';
+      bar_chart.innerText = percentage+' %';
+      result.appendChild(bar_chart_name);
+      result.appendChild(bar_chart);
+      $('#result_short').append(result);
     }
 
+    // create the table with the statements of all parties
     $('#result_long table').innerHTML = '';
     var tr = document.createElement('tr');
     tr.appendChild(document.createElement('th'));
     tr.appendChild(document.createElement('th'));
     var th_you = document.createElement('th');
     th_you.innerText = "Du";
-    colspan = 0;
-    for (var j in resorted) {
-      if (resorted.hasOwnProperty(j)) {
-        var th = document.createElement('th');
-        th.innerText = j;
-        tr.appendChild(th);
-        colspan++;
-      }
+    for (var i in sortedShortNames) {
+      var th = document.createElement('th');
+      th.innerText = sortedShortNames[i];
+      tr.appendChild(th);
     }
     $('#result_long table').appendChild(tr);
 
-    colspan = colspan + 2;
-    alternatingClass = "alternate-1"; // for alternating the rows gray and not gray
+    // add two rows for each question
+    for(i = 0; i < self.data.questions.length; i++) {
+      var question = self.data.questions[i];
+      console.log(question);
 
-    for(var index = 0; index < daten.frage.length; index++) {
-      var frage = daten.frage[index];
+      var expandRow = document.createElement('tr');
+      expandRow.className = 'expandRow' + (self.weights[i] > 1 ? ' double':'');
+      expandRow.setAttribute('data-question', i);
 
-      eigeneMeinung = daten.wertung[index][daten.wertung[index].length-1];
-      kurzfrage     = daten.kurzfragen[index];
+      var td = document.createElement('td');
+      td.innerText = question.description;
+      expandRow.appendChild(td);
 
-      doubleclass=""
-      if (daten.gewichtung.indexOf(index) >= 0){
-        doubleclass="double"
-      }
-      frage = trimQuestion(frage);
+      td = document.createElement('td');
+      td.className = 'ownresult';
+      var div = document.createElement('div');
+      div.className = OPINION_CLASS_MAP[self.votes[i]];
+      td.appendChild(div);
+      expandRow.appendChild(td);
 
-      id=kurzfrage.split()
-      id = id[0] + index
-
-      reasonDiv = '<div id="reasonDiv'+id+'" class="reasonDiv">';
-      listP = '';
-
-      for (var k in resorted) {
-        if (resorted.hasOwnProperty(k)) {
-          kurz = k;
-          b = resorted[k];
-          i = daten.parteiKurz.indexOf(kurz)
-
-          wertung    = daten.wertung[index][i];
-          parteikurz = daten.parteiKurz[i];
-          grund      = daten.gruende[index][i];
-          partei     = daten.partei[i];
-
-          switch(wertung) {
-            case "1":
-              div ='<div class="w_pro"></div>';
-              break;
-            case "-1":
-              div ='<div class="w_against"></div>';
-              break;
-            case "0":
-              div ='<div class="w_equal"></div>';
-              break;
-              default:
-            div ='<div class="w_skip"></div>'
-          }
-          listP = listP + '<td class="center">' + div + '</td>';
-
-          reasonDiv = reasonDiv + '<h3>'+partei+' ('+parteikurz+')</h3><p>' + grund + '</p>';
-        }
-      }
-      reasonDiv = reasonDiv + "</div>";
-
-      switch(eigeneMeinung) {
-        case "1":
-          div ='<div class="w_pro"></div>';
-          break;
-        case "-1":
-          div ='<div class="w_against"></div>';
-          break;
-        case "0":
-          div ='<div class="w_equal"></div>';
-          break;
-          default:
-        div ='<div class="w_skip"></div>'
+      // add the icons to the row
+      for (var j in sortedShortNames) {
+        td = document.createElement('td');
+        td.className = 'center';
+        div = document.createElement('div');
+        div.className = OPINION_CLASS_MAP[question.statements[sortedShortNames[j]][0]];
+        td.appendChild(div);
+        expandRow.appendChild(td);
       }
 
-      if(alternatingClass == "alternate-1") {
-        alternatingClass = "alternate-2";
-      }else{
-        alternatingClass = "alternate-1";
+      $('#result_long table').appendChild(expandRow);
+
+      // add the row containing the statements of all parties for this question
+      var statementsRow = document.createElement('tr');
+      statementsRow.className = 'resultReason';
+      statementsRow.setAttribute('data-reason', i);
+      statementsRow.colSpan = sortedShortNames.length + 2;
+
+      td = document.createElement('td');
+      reasonDiv = document.createElement('div');
+      reasonDiv.className = 'reasonDiv';
+
+      for (var k in sortedShortNames) {
+        var partyHeading = document.createElement('h3');
+        var longName = getPartyByShortname(sortedShortNames[k]).longName;
+        partyHeading.innerText = longName + ' (' + sortedShortNames[k] + ')';
+        reasonDiv.appendChild(partyHeading);
+        var statement = document.createElement('p');
+        statement.innerText = question.statements[sortedShortNames[k]][1];
+        reasonDiv.appendChild(statement);
       }
 
-      var dummyDiv1 = document.createElement('tbody');
-      dummyDiv1.innerHTML = '<tr class="expandRow ' + alternatingClass + ' ' + doubleclass +'" data-question="'+id+'"><td>' +frage+'</td><td class="ownresult">'+div+'</td>'+listP+'</tr>';
-      $('#result_long table').appendChild(dummyDiv1.childNodes[0]);
-      var dummyDiv2 = document.createElement('tbody');
-      dummyDiv2.innerHTML = '<tr data-reason="'+id+'" class="resultReason"><td colspan="'+colspan+'">'+reasonDiv+'</td></tr>';
-      $('#result_long table').appendChild(dummyDiv2.childNodes[0]);
+      td.appendChild(reasonDiv);
+      statementsRow.appendChild(td);
+      $('#result_long table').appendChild(statementsRow);
     }
-
 
     showContainer(4);
     // always go to the top:
     window.scrollTo(0, 0);
 
-    // click on result
+    // add event listeners
     $$('tr.expandRow').each(function(i1, elem) {
       elem.addEventListener('click', function(){
         var id = elem.getAttribute('data-question');
@@ -527,9 +338,6 @@ var studimat = function() {
       self.wahlomat_language = wahlomat_accepted_languages[0];
     }
 
-    // update all elements which have a data-studimat-lang attribute
-    helper.updateLanguage(lang[self.wahlomat_language]);
-
     $$('.container .containerFooter').each(function(i, elem){
       if(i !== 0){
         var btn = document.createElement('div');
@@ -543,6 +351,9 @@ var studimat = function() {
       }
     });
 
+    // update all elements which have a data-studimat-lang attribute
+    helper.updateLanguage(lang[self.wahlomat_language]);
+
     // load the data
     var httpRequest = new XMLHttpRequest();
 
@@ -553,11 +364,9 @@ var studimat = function() {
     httpRequest.onreadystatechange = function() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
-          // convert csv data to json
-          var parse_result = Papa.parse(httpRequest.responseText);
 
-          // move json data to global variable "daten"
-          readData(parse_result.data);
+          // TODO: error handling
+          self.data = JSON.parse(httpRequest.responseText);
 
           // this method will return a closure that stores i and calls showQuestion
           // when invoked
@@ -568,7 +377,7 @@ var studimat = function() {
           };
 
           // create the small dots that link to the questions
-          for (var i = 0; i < daten.frage.length; i++) { // TODO: rename daten.frage to data.questions
+          for (var i = 0; i < self.data.questions.length; i++) {
             var a = document.createElement('a');
             a.href = '#';
             a.title = 'Frage ' + (parseInt(i) + 1);
@@ -580,29 +389,15 @@ var studimat = function() {
             $('#jumpto').appendChild(a);
           }
 
-          // add click events to the voting buttons
-          $$('.voting .vote').each(function(i, elem) {
-            elem.addEventListener('click', function() {
-              voting = elem.getAttribute("data-vote");
-
-              // the actual voting part, as in "save the vote"
-              numberOfParties = daten.partei.length;
-              daten.wertung[self.currentQuestion][numberOfParties] = voting;
-
-              // also show the next question or whatever
-              showQuestion(parseInt(self.currentQuestion)+1);
-
-              return false;
-            });
-          });
-
           showContainer(1);
         } else {
           alert("Could not fetch questions from the server. Sorry. :(");
         }
       }
     };
-    httpRequest.open('GET', "data/daten_"+self.wahlomat_language+".csv");
+
+    // TODO: this should be configurable
+    httpRequest.open('GET', "data/demo_"+self.wahlomat_language+".json");
     httpRequest.send();
 
     $('#startmatowahl').onclick = function() {
@@ -611,8 +406,18 @@ var studimat = function() {
       showQuestion(0);
     };
 
+    // add click events to the voting buttons
+    $$('.voting .vote').each(function(i, elem) {
+      elem.addEventListener('click', function() {
+        self.votes[self.currentQuestion] = elem.getAttribute("data-vote");
+        showQuestion(self.currentQuestion + 1);
+        return false;
+      });
+    });
+
     $('#zumresult').onclick = function() {
-      calculateResult();
+      calculateScores();
+      showResult();
     };
 
     $('#language').onclick = function() {

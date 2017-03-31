@@ -35,7 +35,7 @@ lang['de']['einleitung'] =
 lang['de']['losgehts'] = "los geht's";
 
 // second page
-lang['de']['gewichtung'] = 'Was ist dir besonders wichtig?';
+lang['de']['weighting'] = 'Was ist dir besonders wichtig?';
 lang['de']['gtxt'] ='<p>Hier kannst du beliebig viele Statements auswählen, die dir besonders wichtig sind. Sie werden dann doppelt gewichtet.</p>';
 lang['de']['next'] = 'Weiter zur Auswertung';
 

@@ -459,6 +459,18 @@ footer {
 	transition: background 0.08s linear;
 	cursor: pointer;
 }
+#result_long tr.expandRow:nth-child(4n+2) {
+  background: #f0f0f0;
+}
+#result_long tr.expandRow:hover  {
+	background: #cecece
+}
+#result_long tr.expandRow.double  {
+	background: #f2951f;
+}
+#result_long tr.expandRow.double:hover  {
+	background: #db800d;
+}
 #result_long tr.expandRow.showResult {
 	transition: background 0.1s linear;
 	font-weight: bold;
@@ -470,16 +482,6 @@ footer {
 #result_long tr.expandRow td:first-of-type{
 	background: url('../img/pfeil1.png') 3px 10px no-repeat;
 	padding-left: 16px;
-}
-#result_long tr.expandRow.alternate-2{
-	background: #F0F0F0
-}
-
-#result_long tr.expandRow:hover  {
-	background: #cecece
-}
-#result_long tr.expandRow.double  {
-	background: #f2951f
 }
 #result_long tr.resultReason td {
 	padding: 0 6px 0 6px;
@@ -495,8 +497,6 @@ footer {
 	border-right: 1px solid #757575;
 }
 
-
-
 .reasonDiv {
 	margin-left: 25px;
 	margin-bottom: 10px;
@@ -506,7 +506,7 @@ footer {
 }
 
 /*icons*/
-.w_pro, .w_against, .w_equal,.w_skip {
+.w_pro, .w_against, .w_neutral, .w_skip {
 	background-image: url('../img/icons_minimal.png');
 	width: 16px;
 	height: 16px;
@@ -519,7 +519,7 @@ footer {
 .w_against {
 	background-position: -16px 0px
 }
-.w_equal {
+.w_neutral {
 	background-position: -32px 0px
 }
 .w_skip {

@@ -36,7 +36,7 @@ lang['en']['einleitung'] =
 lang['en']['losgehts'] = "start";
 
 // second page
-lang['en']['gewichtung'] = 'What is important to you?';
+lang['en']['weighting'] = 'What is important to you?';
 lang['en']['gtxt'] ='<p>Select as many statements as you like. They will be respected twice as much.</p>';
 lang['en']['next'] = 'Go to results';
 
