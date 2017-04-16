@@ -173,8 +173,8 @@ var studimat = function() {
       return self.scores[b] - self.scores[a];
     });
 
-    for(i = 0; i < self.data.parties.length; i++) { // TODO: sort by score
-      var score = self.scores[self.data.parties[i].shortName] / self.maxScore;
+    for(i = 0; i < sortedShortNames.length; i++) { // TODO: sort by score
+      var score = self.scores[sortedShortNames[i]] / self.maxScore;
       var percentage = Math.round(score * 100 * 100) / 100;
 
       // create bars for the bar chart
@@ -182,7 +182,7 @@ var studimat = function() {
       result.className = 'result_new_partie';
       var bar_chart_name = document.createElement('div');
       bar_chart_name.className = 'barchart_name';
-      bar_chart_name.innerText = self.data.parties[i].longName;
+      bar_chart_name.innerText = getPartyByShortname(sortedShortNames[i]).longName;
       var bar_chart = document.createElement('div');
       bar_chart.className = 'barchart';
       bar_chart.style.width = percentage+'%';
