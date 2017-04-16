@@ -6,21 +6,18 @@
 */
 var lang = lang || {};
 lang['de'] = {};
-lang['de']['lang'] = "de"
 
-lang['de']['of']		= "von"
-lang['de']['yes'] 	= "Ja"
-lang['de']['no']		= "Nein"
-lang['de']['maybe']	= "Enthaltung"
-lang['de']['skip']	= "Überspringen"
-lang['de']['back']	= "Zurück"
+lang['de']['of']    = "von";
+lang['de']['yes']   = "Ja";
+lang['de']['no']    = "Nein";
+lang['de']['maybe'] = "Enthaltung";
+lang['de']['skip']  = "Überspringen";
+lang['de']['back']  = "Zurück";
 
 lang['de']['switchLangShort'] = 'switch to english'
-lang['de']['switchLanguage'] = "Wenn Sie nun die Sprache wechseln verlieren Sie alle Angaben, die sie bisher gemacht haben\nChanging the language will result in loosing all answers given to this point. Proceed?"
+lang['de']['switchLanguage'] = "Changing the language will result in loosing all answers given to this point. Proceed?"
 
 lang['de']['logoClick'] = "Wenn Sie die Seite neu laden verlieren Sie alle Angaben, die sie bisher gemacht haben\nReloading the page will cause loss of all answers given. Proceed?"
-
-lang['de']['sharrif'] = '<div class="shariff" data-theme="standard" data-orientation="vertical" data-lang="de" data-services="[&quot;facebook&quot;,&quot;twitter&quot;]"></div><script>$(\'script[src="shariff/shariff.min.js"]\').remove();$("<script>").attr("src", "shariff/shariff.min.js").appendTo("head");</script>';
 
 // first page
 lang['de']['header'] = "Hochschulwahlen 2015/2016";
@@ -40,5 +37,5 @@ lang['de']['gtxt'] ='<p>Hier kannst du beliebig viele Statements auswählen, die
 lang['de']['next'] = 'Weiter zur Auswertung';
 
 // third page
-lang['result'] = '<p>Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen mit Begründungen (klick auf die Frage) der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>';
-lang['furtherinfos'] = '<h3>Weitere Informationen zur Wahl</h3><p>Viele weitere Infos zur diesjährigen Wahl und zur Hochschulpolitik an deiner Uni findest du in der Wahlzeitung und auf der Webseite deines AStA. <a href="https://www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen">www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen</a></p>';
+lang['de']['result'] = '<p>Der studi-mat ergab für dich folgendes Ergebnis. Unten findest du zu jeder Frage die Postionen mit Begründungen (klick auf die Frage) der einzelnen Listen. Dies ist keine Wahlempfehlung, sondern nur ein Informationsangebot über die aktuellen Positionen in der Hochschulpolitik an der TU Darmstadt.</p>';
+lang['de']['furtherinfos'] = '<h3>Weitere Informationen zur Wahl</h3><p>Viele weitere Infos zur diesjährigen Wahl und zur Hochschulpolitik an deiner Uni findest du in der Wahlzeitung und auf der Webseite deines AStA. <a href="https://www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen">www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen</a></p>';

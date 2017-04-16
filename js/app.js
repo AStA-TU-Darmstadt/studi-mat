@@ -82,7 +82,7 @@ var studimat = function() {
       $("a.vote").blur();
 
     } else {
-      showWeightingTable(); // jumps to the next container
+      showContainer(3); // jumps to the next container
     }
     // always go to the top:
     window.scrollTo(0, 0);
@@ -94,10 +94,10 @@ var studimat = function() {
 
 
   /*
-   * shows a dialog which allows selecting questions that are especially
+   * creates a dialog which allows selecting questions that are especially
    * important to the user
   */
-  function showWeightingTable() {
+  function updateWeightingTable() {
     $('#weighting table').innerHTML = "";
     for(var i = 0; i < self.data.questions.length; i++) {
       var tr = document.createElement('tr');
@@ -121,10 +121,6 @@ var studimat = function() {
       tr.appendChild(td2);
       $('#weighting table').appendChild(tr);
     }
-
-    showContainer(3);
-    // always scroll to the top:
-    window.scrollTo(0, 0);
   }
 
 
@@ -294,6 +290,7 @@ var studimat = function() {
 
 
   function showContainer(num){
+    self.currentContainer = num;
     if(num != 1) {
       $$('.container').each(function(i, elem) { hide(elem); });
       show($('.container_'+num));
@@ -313,26 +310,87 @@ var studimat = function() {
 
 
   function toggleLanguage(){
-    if (!self.wahlomat_started || confirm(lang[self.wahlomat_language]['switchLanguage'])) {
-      // change the language
-      self.wahlomat_language = wahlomat_accepted_languages[1 - wahlomat_accepted_languages.indexOf(self.wahlomat_language)];
-      location.href = "?lang="+self.wahlomat_language;
+    self.wahlomat_language = wahlomat_accepted_languages[1 - wahlomat_accepted_languages.indexOf(self.wahlomat_language)];
+    // update all elements which have a data-studimat-lang attribute
+    helper.updateLanguage(lang[self.wahlomat_language]);
+
+    fetchQuestions(self.wahlomat_language, function(data) {
+      self.data = data;
+
+      // update the small jumptp dots
+      updateJumptoDots();
+
+      // update weighting table
+      updateWeightingTable();
+
+      if (self.currentContainer == 2) {
+        showQuestion(self.currentQuestion);
+      } else if (self.currentContainer == 4) {
+        showResult();
+      }
+    });
+  }
+
+
+  function fetchQuestions(lang, callback) {
+    var httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+     alert('Giving up :( Cannot create an XMLHTTP instance');
+     return false;
+    }
+
+    httpRequest.onreadystatechange = function() {
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+
+          // TODO: error handling
+          var data = JSON.parse(httpRequest.responseText);
+          callback(data);
+        } else {
+          alert("Could not fetch questions from the server. Sorry. :(");
+        }
+      }
+    };
+
+    // TODO: this should be configurable
+    httpRequest.open('GET', "data/demo_"+self.wahlomat_language+".json");
+    httpRequest.send();
+  }
+
+  // this method will return a closure that stores i and calls showQuestion
+  // when invoked
+  var showQuestionClosure = function(i){
+    return function() {
+      showQuestion(i);
+    };
+  };
+
+  /*
+   * create the small dots that link to the questions
+   */
+  function updateJumptoDots() {
+    $('#jumpto').innerHTML = '';
+    for (var i = 0; i < self.data.questions.length; i++) {
+      var a = document.createElement('a');
+      a.href = '#';
+      a.title = (parseInt(i) + 1);
+      var span = document.createElement('span');
+      span.className = 'sr-hidden';
+      span.innerText = parseInt(i) + 1;
+      a.appendChild(span);
+      a.addEventListener('click', showQuestionClosure(i));
+      $('#jumpto').appendChild(a);
     }
   }
 
 
   window.onload = function() {
-    // Determine the current language
-    var lang_url = helper.getURLparam("lang");
-    var lang_cookie = helper.getCookie("lang");
+    var navigator_lang = navigator.language.split('-')[0];
 
-    if (lang_url !== "" && wahlomat_accepted_languages.indexOf(lang_url) != -1) {
-      console.log("setting language (URL) to", lang_url);
-      self.wahlomat_language = lang_url;
-      helper.setCookie("lang", lang_url);
-    } else if (lang_cookie !== "" && wahlomat_accepted_languages.indexOf(lang_cookie) != -1) {
-      console.log("setting language (cookie) to", lang_cookie);
-      self.wahlomat_language = lang_cookie;
+    if (wahlomat_accepted_languages.indexOf(navigator_lang) != -1) {
+      console.log("navigator languange:", navigator_lang);
+      self.wahlomat_language = navigator_lang;
     } else {
       self.wahlomat_language = wahlomat_accepted_languages[0];
     }
@@ -353,51 +411,17 @@ var studimat = function() {
     // update all elements which have a data-studimat-lang attribute
     helper.updateLanguage(lang[self.wahlomat_language]);
 
-    // load the data
-    var httpRequest = new XMLHttpRequest();
+    fetchQuestions(self.wahlomat_language, function(data) {
+      self.data = data;
 
-    if (!httpRequest) {
-     alert('Giving up :( Cannot create an XMLHTTP instance');
-     return false;
-    }
-    httpRequest.onreadystatechange = function() {
-      if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
+      // update the small jumptp dots
+      updateJumptoDots();
 
-          // TODO: error handling
-          self.data = JSON.parse(httpRequest.responseText);
+      // update weighting table
+      updateWeightingTable();
+    });
 
-          // this method will return a closure that stores i and calls showQuestion
-          // when invoked
-          var showQuestionClosure = function(i){
-            return function() {
-              showQuestion(i);
-            };
-          };
-
-          // create the small dots that link to the questions
-          for (var i = 0; i < self.data.questions.length; i++) {
-            var a = document.createElement('a');
-            a.href = '#';
-            a.title = 'Frage ' + (parseInt(i) + 1);
-            var span = document.createElement('span');
-            span.className = 'sr-hidden';
-            span.innerText = parseInt(i) + 1;
-            a.appendChild(span);
-            a.addEventListener('click', showQuestionClosure(i));
-            $('#jumpto').appendChild(a);
-          }
-
-          showContainer(1);
-        } else {
-          alert("Could not fetch questions from the server. Sorry. :(");
-        }
-      }
-    };
-
-    // TODO: this should be configurable
-    httpRequest.open('GET', "data/demo_"+self.wahlomat_language+".json");
-    httpRequest.send();
+    showContainer(1);
 
     $('#startmatowahl').onclick = function() {
       wahlomat_started = true;
@@ -405,7 +429,7 @@ var studimat = function() {
       showQuestion(0);
     };
 
-    // add click events to the voting buttons
+    // add click events for vote buttons
     $$('.voting .vote').each(function(i, elem) {
       elem.addEventListener('click', function() {
         self.votes[self.currentQuestion] = elem.getAttribute("data-vote");

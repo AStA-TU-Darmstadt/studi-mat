@@ -7,21 +7,18 @@
 
 var lang = lang || {};
 lang['en'] = {};
-lang['en']['lang']  ="en"
-lang['en']['of']    = "of"
-lang['en']['yes']   = "yes"
-lang['en']['no']    = "no"
-lang['en']['maybe'] = "maybe"
-lang['en']['skip']  = "Skip"
-lang['en']['back']  = "go back"
 
-lang['en']['switchLangShort'] = 'wechsel zu deutsch'
-lang['en']['switchLanguage'] = "Wenn Sie nun die Sprache wechseln verlieren Sie alle Angaben, die sie bisher gemacht haben\nChanging the language will result in loosing all answers given to this point. Proceed?"
+lang['en']['of']    = "of";
+lang['en']['yes']   = "yes";
+lang['en']['no']    = "no";
+lang['en']['maybe'] = "maybe";
+lang['en']['skip']  = "Skip";
+lang['en']['back']  = "go back";
 
-lang['en']['logoClick']		= "Wenn Sie die Seite neu laden verlieren Sie alle Angaben, die sie bisher gemacht haben\nReloading the page will cause loss of all answers given. Proceed?"
+lang['en']['switchLangShort'] = 'wechsel zu deutsch';
+lang['en']['switchLanguage'] = "Changing the language will result in loosing all answers given to this point. Proceed?";
 
-lang['en']['sharrif'] = '<div class="shariff" data-theme="standard" data-orientation="vertical" data-lang="en" data-services="[&quot;facebook&quot;,&quot;twitter&quot;]"></div><script>$(\'script[src="shariff/shariff.min.js"]\').remove();$("<script>").attr("src", "shariff/shariff.min.js").appendTo("head");</script>';
-
+lang['en']['logoClick']		= "Reloading the page will cause loss of all answers given. Proceed?";
 
 // First page
 lang['en']['header'] = "University elections 2015/2016";
@@ -37,9 +34,9 @@ lang['en']['losgehts'] = "start";
 
 // second page
 lang['en']['weighting'] = 'What is important to you?';
-lang['en']['gtxt'] ='<p>Select as many statements as you like. They will be respected twice as much.</p>';
+lang['en']['gtxt'] ='<p>Select as many statements as you like. They will be weighted twice.</p>';
 lang['en']['next'] = 'Go to results';
 
 // third page
-lang['en']['result'] = '<p>The studi-mat calculated the following result for you. Down below you can see the positions and a detailed answer (click on the question) of every group with their statements. Remember that this is service just provides you with information, it should not be misinterpreted as voting advice in any form.</p>';
+lang['en']['result'] = '<p>The studi-mat calculated the following result for you. Down below you can see the positions and a detailed answer (click on the question) of every group with their statements. Remember that this service just provides information about the parties positions, it should not be misinterpreted as voting advice in any form.</p>';
 lang['en']['furtherinfos'] = '<h3>Further informations</h3><p>More informations about the elections you will find on the webpages of the groups (may not be in english) and the official website of your students council (AStA). <a href="https://www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen">www.asta.tu-darmstadt.de/asta/de/themen/hochschulwahlen</a></p>';
